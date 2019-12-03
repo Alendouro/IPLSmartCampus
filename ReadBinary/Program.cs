@@ -12,7 +12,7 @@ namespace ReadBinary
         
         static void Main(string[] args)
         {
-            ReadingBinary("C:\\Users\\joao_\\data.bin");
+            ReadingBinary("C:\\Users\\HP\\Desktop\\data.bin");
         }
 
         private static void ReadingBinary(string path) {
@@ -37,5 +37,11 @@ namespace ReadBinary
                 }  
             }
         }
+
+        //Converter para XML
+        //Enviar para BD 
+        //Criar API na BD
+        //Enviar dados para APP
+
     }
 }
