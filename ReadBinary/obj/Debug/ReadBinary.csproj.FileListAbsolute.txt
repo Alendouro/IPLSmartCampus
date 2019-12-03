@@ -20,3 +20,6 @@ C:\Users\HP\Desktop\College\Terceiro Ano\IS - 4 anos\IPLSmartCampus\ReadBinary\o
 C:\Users\HP\Desktop\College\Terceiro Ano\IS - 4 anos\IPLSmartCampus\ReadBinary\obj\Debug\ReadBinary.exe
 C:\Users\HP\Desktop\College\Terceiro Ano\IS - 4 anos\IPLSmartCampus\ReadBinary\obj\Debug\ReadBinary.pdb
 >>>>>>> Stashed changes
+C:\Users\HP\Desktop\College\Terceiro Ano\IS - 4 anos\IPLSmartCampus\ReadBinary\bin\Debug\M2Mqtt.Net.dll
+C:\Users\HP\Desktop\College\Terceiro Ano\IS - 4 anos\IPLSmartCampus\ReadBinary\bin\Debug\M2Mqtt.Net.pdb
+C:\Users\HP\Desktop\College\Terceiro Ano\IS - 4 anos\IPLSmartCampus\ReadBinary\obj\Debug\ReadBinary.csproj.CopyComplete
