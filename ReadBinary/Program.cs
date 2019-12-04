@@ -70,6 +70,7 @@ namespace ReadBinary
                 // return teste;
                 teste = createDocSensor(id, temperature, humidity, battery, formattedDate);
                 Console.WriteLine(teste.OuterXml);
+                return teste.OuterXml;
             }
             
             //Console.WriteLine(teste.OuterXml);
@@ -91,7 +92,7 @@ namespace ReadBinary
             // You use SetAttribute to set attribute
             root.AppendChild(createSensor(doc, id, temperature, humidity, battery, date));
 
-            doc.Save(@"sample.xml");
+            //doc.Save(@"sample.xml");
 
             return doc.DocumentElement;
         }
