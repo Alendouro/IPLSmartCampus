@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<sensors>
+  <sensor>
+    <id>2</id>
+    <temperature>22,04</temperature>
+    <humidity>47,8</humidity>
+    <battery>99</battery>
+    <date>21-11-2019 19:49</date>
+  </sensor>
+</sensors>

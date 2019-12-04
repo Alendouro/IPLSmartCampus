@@ -22,7 +22,6 @@ namespace ReadBinary
         static void Main(string[] args)
         {
             MqttClient mClient = new MqttClient("127.0.0.1");
-            string[] topic = { "sensors" };
 
             mClient.Connect(Guid.NewGuid().ToString());
             if (!mClient.IsConnected)
@@ -33,63 +32,89 @@ namespace ReadBinary
 
             mClient.MqttMsgPublishReceived += client_MqttMsgPublishReceived;
 
-            byte[] qosLevels = { MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE}; 
+            //byte[] qosLevels = { MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE};
+            string doc = ReadingBinary();
+            
 
-            mClient.Subscribe(topic, qosLevels);
+            mClient.Publish("sensors", Encoding.UTF8.GetBytes(doc), MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, true);
 
-            //Console.ReadKey();
-
-            if (mClient.IsConnected)
-            {
-                mClient.Unsubscribe(topic); //Put this in a button to see notif!
-                mClient.Disconnect(); //Free process and process's resources
-            }
-
-            ReadingBinary("C:\\Users\\joao_\\data.bin");
+            //ReadingBinary();
         }
 
-        private static void ReadingBinary(string path) {
+        private static string ReadingBinary() {
             //FileStream fs = new FileStream(path, FileMode.Open);
-            using (BinaryReader br = new BinaryReader(File.Open(path, FileMode.Open))) {
+            int id = 0;
+            float temperature = 0;
+            float humidity = 0;
+            int battery = 0;
+            string formattedDate = "";
+            XmlElement teste = null;
+            BinaryReader br = new BinaryReader(File.Open("C:\\Users\\joao_\\data.bin", FileMode.Open));
                 while (br.BaseStream.Position != br.BaseStream.Length)
                 {
-                    int id = (byte)br.ReadInt32();
-                    float temperature = br.ReadSingle();
-                    float humidity = br.ReadSingle();
-                    int battery = (byte)br.ReadInt32();
+                     id = (byte)br.ReadInt32();
+                     temperature = br.ReadSingle();
+                     humidity = br.ReadSingle();
+                     battery = (byte)br.ReadInt32();
                     int timestamp = br.ReadInt32();
                     DateTime dt = new DateTime(1970, 1, 1, 0, 0, 0, 0).AddSeconds(timestamp).ToLocalTime();
-                    string formattedDate = dt.ToString("dd-MM-yyyy HH:mm");
+                     formattedDate = dt.ToString("dd-MM-yyyy HH:mm");
                     int trash = br.ReadInt32();
 
-                    /*Console.WriteLine("Sensor ID = " + id);
-                    Console.WriteLine("Tenperature = " + temperature);
-                    Console.WriteLine("Humidity = " + humidity);
-                    Console.WriteLine("Batery = " + battery);
-                    Console.WriteLine("Data = " + formattedDate + "\n");*/
+                /*Console.WriteLine("Sensor ID = " + id);
+                Console.WriteLine("Tenperature = " + temperature);
+                Console.WriteLine("Humidity = " + humidity);
+                Console.WriteLine("Batery = " + battery);
+                Console.WriteLine("Data = " + formattedDate + "\n");*/
 
-                    XmlElement xml = createSensor(id, temperature, humidity, battery, formattedDate);
-                    Console.WriteLine(xml);
-                }  
+                // return teste;
+                teste = createDocSensor(id, temperature, humidity, battery, formattedDate);
+                Console.WriteLine(teste.OuterXml);
             }
+            
+            //Console.WriteLine(teste.OuterXml);
+
+            return teste.OuterXml;
+        }
+
+        private static XmlElement createDocSensor(int id, float temperature, float humidity, int battery, string date) {
+            XmlDocument doc = new XmlDocument();
+            // Create the XML Declaration, and append it to XML document
+            XmlDeclaration dec = doc.CreateXmlDeclaration("1.0", null, null);
+            doc.AppendChild(dec);
+            // Create the root element
+            XmlElement root = doc.CreateElement("sensors");
+            doc.AppendChild(root);
+            // Create Books
+            // Note that to set the text inside the element,
+            // you use .InnerText
+            // You use SetAttribute to set attribute
+            root.AppendChild(createSensor(doc, id, temperature, humidity, battery, date));
+
+            doc.Save(@"sample.xml");
+
+            return doc.DocumentElement;
         }
 
         private static XmlElement createSensor(XmlDocument doc, int id, float t, float h, int b, string d)
         {
             XmlElement sensor = doc.CreateElement("sensor");
-            sensor.SetAttribute("id", id);
+            XmlElement idx = doc.CreateElement("id");
+            idx.InnerText = id +"";
             XmlElement temperature = doc.CreateElement("temperature");
-            temperature.InnerText = t;
+            temperature.InnerText = t+"";
             XmlElement humidity = doc.CreateElement("humidity");
-            humidity.InnerText = h;
+            humidity.InnerText = h+"";
             XmlElement battery = doc.CreateElement("battery");
-            battery.InnerText = b;
+            battery.InnerText = b +"";
             XmlElement date = doc.CreateElement("date");
             date.InnerText = d;
+            sensor.AppendChild(idx);
             sensor.AppendChild(temperature);
             sensor.AppendChild(humidity);
             sensor.AppendChild(battery);
             sensor.AppendChild(date);
+
             return sensor;
         }
 

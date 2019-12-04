@@ -11,3 +11,15 @@ C:\Users\HP\Desktop\College\Terceiro Ano\IS - 4 anos\IPLSmartCampus\ShowData\obj
 C:\Users\HP\Desktop\College\Terceiro Ano\IS - 4 anos\IPLSmartCampus\ShowData\obj\Debug\ShowData.csproj.CopyComplete
 C:\Users\HP\Desktop\College\Terceiro Ano\IS - 4 anos\IPLSmartCampus\ShowData\obj\Debug\ShowData.exe
 C:\Users\HP\Desktop\College\Terceiro Ano\IS - 4 anos\IPLSmartCampus\ShowData\obj\Debug\ShowData.pdb
+C:\Users\joao_\Desktop\IPLSmartCampus\ShowData\bin\Debug\ShowData.exe.config
+C:\Users\joao_\Desktop\IPLSmartCampus\ShowData\bin\Debug\ShowData.exe
+C:\Users\joao_\Desktop\IPLSmartCampus\ShowData\bin\Debug\ShowData.pdb
+C:\Users\joao_\Desktop\IPLSmartCampus\ShowData\bin\Debug\M2Mqtt.Net.dll
+C:\Users\joao_\Desktop\IPLSmartCampus\ShowData\bin\Debug\M2Mqtt.Net.pdb
+C:\Users\joao_\Desktop\IPLSmartCampus\ShowData\obj\Debug\ShowData.csprojAssemblyReference.cache
+C:\Users\joao_\Desktop\IPLSmartCampus\ShowData\obj\Debug\ShowData.Form1.resources
+C:\Users\joao_\Desktop\IPLSmartCampus\ShowData\obj\Debug\ShowData.Properties.Resources.resources
+C:\Users\joao_\Desktop\IPLSmartCampus\ShowData\obj\Debug\ShowData.csproj.GenerateResource.cache
+C:\Users\joao_\Desktop\IPLSmartCampus\ShowData\obj\Debug\ShowData.csproj.CopyComplete
+C:\Users\joao_\Desktop\IPLSmartCampus\ShowData\obj\Debug\ShowData.exe
+C:\Users\joao_\Desktop\IPLSmartCampus\ShowData\obj\Debug\ShowData.pdb

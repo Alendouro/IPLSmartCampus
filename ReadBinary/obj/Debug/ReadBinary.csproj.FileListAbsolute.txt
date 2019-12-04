@@ -1,31 +1,9 @@
-C:\Users\joao_\Documents\19-20\IS\IPL SmartCampus\ReadBinary\obj\Debug\ReadBinary.csprojAssemblyReference.cache
-C:\Users\joao_\Documents\19-20\IS\IPL SmartCampus\ReadBinary\bin\Debug\ReadBinary.pdb
-C:\Users\joao_\Documents\19-20\IS\IPL SmartCampus\ReadBinary\obj\Debug\ReadBinary.pdb
-C:\Users\joao_\Documents\19-20\IS\IPL SmartCampus\ReadBinary\bin\Debug\ReadBinary.exe.config
-C:\Users\joao_\Documents\19-20\IS\IPL SmartCampus\ReadBinary\bin\Debug\ReadBinary.exe
-C:\Users\joao_\Documents\19-20\IS\IPL SmartCampus\ReadBinary\obj\Debug\ReadBinary.exe
-<<<<<<< Updated upstream
 C:\Users\joao_\Desktop\IPLSmartCampus\ReadBinary\bin\Debug\ReadBinary.exe.config
 C:\Users\joao_\Desktop\IPLSmartCampus\ReadBinary\bin\Debug\ReadBinary.exe
 C:\Users\joao_\Desktop\IPLSmartCampus\ReadBinary\bin\Debug\ReadBinary.pdb
-C:\Users\joao_\Desktop\IPLSmartCampus\ReadBinary\obj\Debug\ReadBinary.csprojAssemblyReference.cache
-C:\Users\joao_\Desktop\IPLSmartCampus\ReadBinary\obj\Debug\ReadBinary.exe
-C:\Users\joao_\Desktop\IPLSmartCampus\ReadBinary\obj\Debug\ReadBinary.pdb
-=======
-C:\Users\HP\Desktop\College\Terceiro Ano\IS - 4 anos\IPLSmartCampus\ReadBinary\bin\Debug\ReadBinary.exe.config
-C:\Users\HP\Desktop\College\Terceiro Ano\IS - 4 anos\IPLSmartCampus\ReadBinary\bin\Debug\ReadBinary.exe
-C:\Users\HP\Desktop\College\Terceiro Ano\IS - 4 anos\IPLSmartCampus\ReadBinary\bin\Debug\ReadBinary.pdb
-C:\Users\HP\Desktop\College\Terceiro Ano\IS - 4 anos\IPLSmartCampus\ReadBinary\obj\Debug\ReadBinary.csprojAssemblyReference.cache
-C:\Users\HP\Desktop\College\Terceiro Ano\IS - 4 anos\IPLSmartCampus\ReadBinary\obj\Debug\ReadBinary.csproj.CoreCompileInputs.cache
-C:\Users\HP\Desktop\College\Terceiro Ano\IS - 4 anos\IPLSmartCampus\ReadBinary\obj\Debug\ReadBinary.exe
-C:\Users\HP\Desktop\College\Terceiro Ano\IS - 4 anos\IPLSmartCampus\ReadBinary\obj\Debug\ReadBinary.pdb
->>>>>>> Stashed changes
-<<<<<<< Updated upstream
-C:\Users\HP\Desktop\College\Terceiro Ano\IS - 4 anos\IPLSmartCampus\ReadBinary\bin\Debug\M2Mqtt.Net.dll
-C:\Users\HP\Desktop\College\Terceiro Ano\IS - 4 anos\IPLSmartCampus\ReadBinary\bin\Debug\M2Mqtt.Net.pdb
-C:\Users\HP\Desktop\College\Terceiro Ano\IS - 4 anos\IPLSmartCampus\ReadBinary\obj\Debug\ReadBinary.csproj.CopyComplete
-=======
 C:\Users\joao_\Desktop\IPLSmartCampus\ReadBinary\bin\Debug\M2Mqtt.Net.dll
 C:\Users\joao_\Desktop\IPLSmartCampus\ReadBinary\bin\Debug\M2Mqtt.Net.pdb
+C:\Users\joao_\Desktop\IPLSmartCampus\ReadBinary\obj\Debug\ReadBinary.csprojAssemblyReference.cache
 C:\Users\joao_\Desktop\IPLSmartCampus\ReadBinary\obj\Debug\ReadBinary.csproj.CopyComplete
->>>>>>> Stashed changes
+C:\Users\joao_\Desktop\IPLSmartCampus\ReadBinary\obj\Debug\ReadBinary.exe
+C:\Users\joao_\Desktop\IPLSmartCampus\ReadBinary\obj\Debug\ReadBinary.pdb
