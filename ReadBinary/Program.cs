@@ -12,13 +12,6 @@ namespace ReadBinary
 {
     class Program
     {
-
-        static void client_MqttMsgPublishReceived(object sender, MqttMsgPublishEventArgs e)
-        {
-            Console.WriteLine("Received = " + Encoding.UTF8.GetString(e.Message) +
-            " on topic " + e.Topic);
-        }
-
         static void Main(string[] args)
         {
             MqttClient mClient = new MqttClient("127.0.0.1");
@@ -30,35 +23,33 @@ namespace ReadBinary
                 return;
             }
 
-            mClient.MqttMsgPublishReceived += client_MqttMsgPublishReceived;
-
             //byte[] qosLevels = { MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE};
-            string doc = ReadingBinary();
+            XmlDocument doc = ReadingBinary();
             
 
-            mClient.Publish("sensors", Encoding.UTF8.GetBytes(doc), MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, true);
+            mClient.Publish("sensors", Encoding.UTF8.GetBytes(doc.InnerXml.ToString()), MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, true);
 
             //ReadingBinary();
         }
 
-        private static string ReadingBinary() {
+        private static XmlDocument ReadingBinary() {
             //FileStream fs = new FileStream(path, FileMode.Open);
             int id = 0;
             float temperature = 0;
             float humidity = 0;
             int battery = 0;
             string formattedDate = "";
-            XmlElement teste = null;
+            XmlDocument teste = null;
             BinaryReader br = new BinaryReader(File.Open("C:\\Users\\joao_\\data.bin", FileMode.Open));
                 while (br.BaseStream.Position != br.BaseStream.Length)
                 {
-                     id = (byte)br.ReadInt32();
-                     temperature = br.ReadSingle();
-                     humidity = br.ReadSingle();
-                     battery = (byte)br.ReadInt32();
+                    id = (byte)br.ReadInt32();
+                    temperature = br.ReadSingle();
+                    humidity = br.ReadSingle();
+                    battery = (byte)br.ReadInt32();
                     int timestamp = br.ReadInt32();
                     DateTime dt = new DateTime(1970, 1, 1, 0, 0, 0, 0).AddSeconds(timestamp).ToLocalTime();
-                     formattedDate = dt.ToString("dd-MM-yyyy HH:mm");
+                    formattedDate = dt.ToString("dd-MM-yyyy HH:mm");
                     int trash = br.ReadInt32();
 
                 /*Console.WriteLine("Sensor ID = " + id);
@@ -70,15 +61,15 @@ namespace ReadBinary
                 // return teste;
                 teste = createDocSensor(id, temperature, humidity, battery, formattedDate);
                 Console.WriteLine(teste.OuterXml);
-                return teste.OuterXml;
+                //return teste.OuterXml;
             }
             
             //Console.WriteLine(teste.OuterXml);
 
-            return teste.OuterXml;
+            return teste;
         }
 
-        private static XmlElement createDocSensor(int id, float temperature, float humidity, int battery, string date) {
+        private static XmlDocument createDocSensor(int id, float temperature, float humidity, int battery, string date) {
             XmlDocument doc = new XmlDocument();
             // Create the XML Declaration, and append it to XML document
             XmlDeclaration dec = doc.CreateXmlDeclaration("1.0", null, null);
@@ -94,7 +85,7 @@ namespace ReadBinary
 
             //doc.Save(@"sample.xml");
 
-            return doc.DocumentElement;
+            return doc;
         }
 
         private static XmlElement createSensor(XmlDocument doc, int id, float t, float h, int b, string d)

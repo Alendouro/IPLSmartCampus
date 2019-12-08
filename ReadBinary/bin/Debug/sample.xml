@@ -7,4 +7,28 @@
     <battery>99</battery>
     <date>21-11-2019 19:49</date>
   </sensor>
+  <sensor>
+    <id>3</id>
+    <temperature>34</temperature>
+    <humidity>34</humidity>
+    <battery>45</battery>
+    <date>
+    </date>
+  </sensor>
+  <sensor>
+    <id>3</id>
+    <temperature>34</temperature>
+    <humidity>34</humidity>
+    <battery>45</battery>
+    <date>
+    </date>
+  </sensor>
+  <sensor>
+    <id>3</id>
+    <temperature>34</temperature>
+    <humidity>34</humidity>
+    <battery>45</battery>
+    <date>
+    </date>
+  </sensor>
 </sensors>
