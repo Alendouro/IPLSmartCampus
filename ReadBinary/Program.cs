@@ -27,7 +27,7 @@ namespace ReadBinary
             XmlDocument doc = ReadingBinary();
             
 
-            mClient.Publish("sensors", Encoding.UTF8.GetBytes(doc.InnerXml.ToString()), MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, true);
+            mClient.Publish("sensors", Encoding.UTF8.GetBytes(doc.OuterXml), MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, true);
 
             //ReadingBinary();
         }
@@ -39,8 +39,12 @@ namespace ReadBinary
             float humidity = 0;
             int battery = 0;
             string formattedDate = "";
+<<<<<<< Updated upstream
             XmlDocument teste = null;
             BinaryReader br = new BinaryReader(File.Open("C:\\Users\\HP\\Desktop\\data.bin", FileMode.Open));
+=======
+            BinaryReader br = new BinaryReader(File.Open("C:\\Users\\joao_\\data.bin", FileMode.Open));
+>>>>>>> Stashed changes
             XmlDocument doc = new XmlDocument();
             XmlElement root = doc.CreateElement("sensors");
             doc.AppendChild(root);
@@ -55,7 +59,17 @@ namespace ReadBinary
                     formattedDate = dt.ToString("dd-MM-yyyy HH:mm");
                     int trash = br.ReadInt32();
 
+<<<<<<< Updated upstream
                 root.AppendChild(createSensor(doc, id, temperature, humidity, battery, formattedDate));
+=======
+                
+                //createSensor(doc, id, temperature, humidity, battery, formattedDate
+                root.AppendChild(createSensor(doc, id, temperature, humidity, battery, formattedDate));
+                //Console.WriteLine(teste.OuterXml);
+                //doc.Save(@"sample.xml");
+                Console.WriteLine(doc.OuterXml);
+               // return doc;
+>>>>>>> Stashed changes
             }
                 Console.WriteLine(doc.OuterXml);
 
