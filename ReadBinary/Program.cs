@@ -26,23 +26,14 @@ namespace ReadBinary
             //byte[] qosLevels = { MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE};
             XmlDocument doc = ReadingBinary();
             
-
             mClient.Publish("sensors", Encoding.UTF8.GetBytes(doc.OuterXml), MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, true);
-
-            //ReadingBinary();
         }
 
         private static XmlDocument ReadingBinary() {
-            //FileStream fs = new FileStream(path, FileMode.Open);
-            int id = 0;
-            float temperature = 0;
-            float humidity = 0;
-            int battery = 0;
-            string formattedDate = "";
-            BinaryReader br = new BinaryReader(File.Open("C:\\Users\\HP\\Desktop\\data.bin", FileMode.Open));
-=======
+            int id, battery;
+            float temperature, humidity;
+            string formattedDate;
             BinaryReader br = new BinaryReader(File.Open("C:\\Users\\joao_\\data.bin", FileMode.Open));
->>>>>>> Stashed changes
             XmlDocument doc = new XmlDocument();
             XmlElement root = doc.CreateElement("sensors");
             doc.AppendChild(root);
@@ -57,37 +48,9 @@ namespace ReadBinary
                     formattedDate = dt.ToString("dd-MM-yyyy HH:mm:ss");
                     int trash = br.ReadInt32();
 
-<<<<<<< Updated upstream
                 root.AppendChild(createSensor(doc, id, temperature, humidity, battery, formattedDate));
-=======
-                
-                //createSensor(doc, id, temperature, humidity, battery, formattedDate
-                root.AppendChild(createSensor(doc, id, temperature, humidity, battery, formattedDate));
-                //Console.WriteLine(teste.OuterXml);
-                //doc.Save(@"sample.xml");
-                Console.WriteLine(doc.OuterXml);
-               // return doc;
->>>>>>> Stashed changes
+
             }
-            return doc;
-        }
-
-        private static XmlDocument createDocSensor(int id, float temperature, float humidity, int battery, string date) {
-            XmlDocument doc = new XmlDocument();
-            // Create the XML Declaration, and append it to XML document
-            XmlDeclaration dec = doc.CreateXmlDeclaration("1.0", null, null);
-            doc.AppendChild(dec);
-            // Create the root element
-            XmlElement root = doc.CreateElement("sensors");
-            doc.AppendChild(root);
-            // Create Books
-            // Note that to set the text inside the element,
-            // you use .InnerText
-            // You use SetAttribute to set attribute
-           // root.AppendChild(createSensor(doc, id, temperature, humidity, battery, date));
-
-            //doc.Save(@"sample.xml");
-
             return doc;
         }
 
