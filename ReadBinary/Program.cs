@@ -41,7 +41,10 @@ namespace ReadBinary
             string formattedDate = "";
             XmlDocument teste = null;
             BinaryReader br = new BinaryReader(File.Open("C:\\Users\\joao_\\data.bin", FileMode.Open));
-                while (br.BaseStream.Position != br.BaseStream.Length)
+            XmlDocument doc = new XmlDocument();
+            XmlElement root = doc.CreateElement("sensors");
+            doc.AppendChild(root);
+            while (br.BaseStream.Position != br.BaseStream.Length)
                 {
                     id = (byte)br.ReadInt32();
                     temperature = br.ReadSingle();
@@ -52,21 +55,18 @@ namespace ReadBinary
                     formattedDate = dt.ToString("dd-MM-yyyy HH:mm");
                     int trash = br.ReadInt32();
 
-                /*Console.WriteLine("Sensor ID = " + id);
-                Console.WriteLine("Tenperature = " + temperature);
-                Console.WriteLine("Humidity = " + humidity);
-                Console.WriteLine("Batery = " + battery);
-                Console.WriteLine("Data = " + formattedDate + "\n");*/
-
                 // return teste;
-                teste = createDocSensor(id, temperature, humidity, battery, formattedDate);
-                Console.WriteLine(teste.OuterXml);
+                
+                //createSensor(doc, id, temperature, humidity, battery, formattedDate
+                root.AppendChild(createSensor(doc, id, temperature, humidity, battery, formattedDate));
+                //Console.WriteLine(teste.OuterXml);
+                Console.WriteLine(doc.OuterXml);
                 //return teste.OuterXml;
             }
             
             //Console.WriteLine(teste.OuterXml);
 
-            return teste;
+            return doc;
         }
 
         private static XmlDocument createDocSensor(int id, float temperature, float humidity, int battery, string date) {
@@ -81,7 +81,7 @@ namespace ReadBinary
             // Note that to set the text inside the element,
             // you use .InnerText
             // You use SetAttribute to set attribute
-            root.AppendChild(createSensor(doc, id, temperature, humidity, battery, date));
+           // root.AppendChild(createSensor(doc, id, temperature, humidity, battery, date));
 
             //doc.Save(@"sample.xml");
 
