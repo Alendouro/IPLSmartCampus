@@ -35,6 +35,8 @@
             this.tabPageRealTimeSensors = new System.Windows.Forms.TabPage();
             this.listBoxSensorsData = new System.Windows.Forms.ListBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.checkedListBoxSensors = new System.Windows.Forms.CheckedListBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.chartTemperature = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tabPage.SuspendLayout();
             this.tabPageRealTimeSensors.SuspendLayout();
@@ -60,7 +62,7 @@
             this.tabPage.Location = new System.Drawing.Point(32, 59);
             this.tabPage.Name = "tabPage";
             this.tabPage.SelectedIndex = 0;
-            this.tabPage.Size = new System.Drawing.Size(740, 358);
+            this.tabPage.Size = new System.Drawing.Size(1056, 536);
             this.tabPage.TabIndex = 1;
             // 
             // tabPageRealTimeSensors
@@ -69,7 +71,7 @@
             this.tabPageRealTimeSensors.Location = new System.Drawing.Point(4, 22);
             this.tabPageRealTimeSensors.Name = "tabPageRealTimeSensors";
             this.tabPageRealTimeSensors.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageRealTimeSensors.Size = new System.Drawing.Size(732, 332);
+            this.tabPageRealTimeSensors.Size = new System.Drawing.Size(1048, 510);
             this.tabPageRealTimeSensors.TabIndex = 0;
             this.tabPageRealTimeSensors.Text = "Real Sensor Data";
             this.tabPageRealTimeSensors.UseVisualStyleBackColor = true;
@@ -85,14 +87,35 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.checkedListBoxSensors);
+            this.tabPage3.Controls.Add(this.label1);
             this.tabPage3.Controls.Add(this.chartTemperature);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(732, 332);
+            this.tabPage3.Size = new System.Drawing.Size(1048, 510);
             this.tabPage3.TabIndex = 1;
             this.tabPage3.Text = "tabPage2";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // checkedListBoxSensors
+            // 
+            this.checkedListBoxSensors.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.checkedListBoxSensors.FormattingEnabled = true;
+            this.checkedListBoxSensors.Location = new System.Drawing.Point(21, 49);
+            this.checkedListBoxSensors.Name = "checkedListBoxSensors";
+            this.checkedListBoxSensors.Size = new System.Drawing.Size(120, 90);
+            this.checkedListBoxSensors.TabIndex = 3;
+            this.checkedListBoxSensors.SelectedIndexChanged += new System.EventHandler(this.CheckedListBoxSensors_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(18, 33);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(51, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Sensores";
             // 
             // chartTemperature
             // 
@@ -100,9 +123,9 @@
             this.chartTemperature.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chartTemperature.Legends.Add(legend1);
-            this.chartTemperature.Location = new System.Drawing.Point(60, 15);
+            this.chartTemperature.Location = new System.Drawing.Point(218, 15);
             this.chartTemperature.Name = "chartTemperature";
-            this.chartTemperature.Size = new System.Drawing.Size(641, 300);
+            this.chartTemperature.Size = new System.Drawing.Size(824, 489);
             this.chartTemperature.TabIndex = 0;
             this.chartTemperature.Text = "chart1";
             // 
@@ -110,7 +133,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1127, 623);
             this.Controls.Add(this.tabPage);
             this.Controls.Add(this.labelTitleDesktopApp);
             this.Name = "Form1";
@@ -119,6 +142,7 @@
             this.tabPage.ResumeLayout(false);
             this.tabPageRealTimeSensors.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartTemperature)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -133,6 +157,8 @@
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.ListBox listBoxSensorsData;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartTemperature;
+        private System.Windows.Forms.CheckedListBox checkedListBoxSensors;
+        private System.Windows.Forms.Label label1;
     }
 }
 
