@@ -40,7 +40,7 @@ namespace ReadBinary
             int battery = 0;
             string formattedDate = "";
             XmlDocument teste = null;
-            BinaryReader br = new BinaryReader(File.Open("C:\\Users\\joao_\\data.bin", FileMode.Open));
+            BinaryReader br = new BinaryReader(File.Open("C:\\Users\\HP\\Desktop\\data.bin", FileMode.Open));
             XmlDocument doc = new XmlDocument();
             XmlElement root = doc.CreateElement("sensors");
             doc.AppendChild(root);
@@ -55,16 +55,9 @@ namespace ReadBinary
                     formattedDate = dt.ToString("dd-MM-yyyy HH:mm");
                     int trash = br.ReadInt32();
 
-                // return teste;
-                
-                //createSensor(doc, id, temperature, humidity, battery, formattedDate
                 root.AppendChild(createSensor(doc, id, temperature, humidity, battery, formattedDate));
-                //Console.WriteLine(teste.OuterXml);
-                Console.WriteLine(doc.OuterXml);
-                //return teste.OuterXml;
             }
-            
-            //Console.WriteLine(teste.OuterXml);
+                Console.WriteLine(doc.OuterXml);
 
             return doc;
         }

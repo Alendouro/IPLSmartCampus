@@ -7,3 +7,13 @@ C:\Users\joao_\Desktop\IPLSmartCampus\ReadBinary\obj\Debug\ReadBinary.csprojAsse
 C:\Users\joao_\Desktop\IPLSmartCampus\ReadBinary\obj\Debug\ReadBinary.csproj.CopyComplete
 C:\Users\joao_\Desktop\IPLSmartCampus\ReadBinary\obj\Debug\ReadBinary.exe
 C:\Users\joao_\Desktop\IPLSmartCampus\ReadBinary\obj\Debug\ReadBinary.pdb
+C:\Users\HP\Desktop\College\Quarto Ano\IS - 4 anos\IPLSmartCampus\ReadBinary\bin\Debug\ReadBinary.exe.config
+C:\Users\HP\Desktop\College\Quarto Ano\IS - 4 anos\IPLSmartCampus\ReadBinary\bin\Debug\ReadBinary.exe
+C:\Users\HP\Desktop\College\Quarto Ano\IS - 4 anos\IPLSmartCampus\ReadBinary\bin\Debug\ReadBinary.pdb
+C:\Users\HP\Desktop\College\Quarto Ano\IS - 4 anos\IPLSmartCampus\ReadBinary\bin\Debug\M2Mqtt.Net.dll
+C:\Users\HP\Desktop\College\Quarto Ano\IS - 4 anos\IPLSmartCampus\ReadBinary\bin\Debug\M2Mqtt.Net.pdb
+C:\Users\HP\Desktop\College\Quarto Ano\IS - 4 anos\IPLSmartCampus\ReadBinary\obj\Debug\ReadBinary.csprojAssemblyReference.cache
+C:\Users\HP\Desktop\College\Quarto Ano\IS - 4 anos\IPLSmartCampus\ReadBinary\obj\Debug\ReadBinary.csproj.CoreCompileInputs.cache
+C:\Users\HP\Desktop\College\Quarto Ano\IS - 4 anos\IPLSmartCampus\ReadBinary\obj\Debug\ReadBinary.csproj.CopyComplete
+C:\Users\HP\Desktop\College\Quarto Ano\IS - 4 anos\IPLSmartCampus\ReadBinary\obj\Debug\ReadBinary.exe
+C:\Users\HP\Desktop\College\Quarto Ano\IS - 4 anos\IPLSmartCampus\ReadBinary\obj\Debug\ReadBinary.pdb
