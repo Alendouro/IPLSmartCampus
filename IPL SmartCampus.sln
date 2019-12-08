@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadBinary", "ReadBinary\Re
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShowData", "ShowData\ShowData.csproj", "{CD72EB8C-4EFC-4564-AB7F-8B00874C9214}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DefineAlert", "DefineAlert\DefineAlert.csproj", "{14EE035A-74B3-46F7-AE85-7F030074D482}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{CD72EB8C-4EFC-4564-AB7F-8B00874C9214}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CD72EB8C-4EFC-4564-AB7F-8B00874C9214}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CD72EB8C-4EFC-4564-AB7F-8B00874C9214}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14EE035A-74B3-46F7-AE85-7F030074D482}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14EE035A-74B3-46F7-AE85-7F030074D482}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14EE035A-74B3-46F7-AE85-7F030074D482}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14EE035A-74B3-46F7-AE85-7F030074D482}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
