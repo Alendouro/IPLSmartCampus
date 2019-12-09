@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.labelTitleDesktopApp = new System.Windows.Forms.Label();
             this.tabPage = new System.Windows.Forms.TabControl();
             this.tabPageRealTimeSensors = new System.Windows.Forms.TabPage();
@@ -95,14 +95,17 @@
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage3.Size = new System.Drawing.Size(1048, 510);
             this.tabPage3.TabIndex = 1;
-            this.tabPage3.Text = "tabPage2";
+            this.tabPage3.Text = "Temperature";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // checkedListBoxSensors
             // 
             this.checkedListBoxSensors.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.checkedListBoxSensors.CheckOnClick = true;
+<<<<<<< Updated upstream
             this.checkedListBoxSensors.ForeColor = System.Drawing.SystemColors.WindowText;
+=======
+>>>>>>> Stashed changes
             this.checkedListBoxSensors.FormattingEnabled = true;
             this.checkedListBoxSensors.Location = new System.Drawing.Point(21, 49);
             this.checkedListBoxSensors.Name = "checkedListBoxSensors";
@@ -121,10 +124,10 @@
             // 
             // chartTemperature
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chartTemperature.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chartTemperature.Legends.Add(legend1);
+            chartArea2.Name = "ChartArea1";
+            this.chartTemperature.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chartTemperature.Legends.Add(legend2);
             this.chartTemperature.Location = new System.Drawing.Point(218, 15);
             this.chartTemperature.Name = "chartTemperature";
             this.chartTemperature.Size = new System.Drawing.Size(824, 489);
