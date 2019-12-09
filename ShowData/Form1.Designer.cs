@@ -101,6 +101,8 @@
             // checkedListBoxSensors
             // 
             this.checkedListBoxSensors.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.checkedListBoxSensors.CheckOnClick = true;
+            this.checkedListBoxSensors.ForeColor = System.Drawing.SystemColors.WindowText;
             this.checkedListBoxSensors.FormattingEnabled = true;
             this.checkedListBoxSensors.Location = new System.Drawing.Point(21, 49);
             this.checkedListBoxSensors.Name = "checkedListBoxSensors";

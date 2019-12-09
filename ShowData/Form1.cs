@@ -19,7 +19,7 @@ namespace ShowData
         MqttClient mClient = new MqttClient("127.0.0.1"); //OR use the broker hostname
         string[] mStrTopicsInfo = {"sensors"};
         //Sensor 1
-        List<float> temperatures = new List<float>();
+        List<double> temperatures = new List<double>();
         List<String> datas = new List<string>();
         XmlNodeList nodeList;
 
@@ -65,7 +65,7 @@ namespace ShowData
                     listBoxSensorsData.Items.Add("--------------------------------------------------------------");
 
                     datas.Add(sensor.SelectSingleNode("date").InnerText);
-                    temperatures.Add(float.Parse(sensor.SelectSingleNode("temperature").InnerText));
+                    temperatures.Add(Math.Round(double.Parse(sensor.SelectSingleNode("temperature").InnerText), 2, MidpointRounding.ToEven));
                 }
 
                 //Percorrer os nodes para ir buscar os sensores existentes (p/ id) 
@@ -83,11 +83,11 @@ namespace ShowData
             });
         }
 
-        private void graphChanged(string[] date, float[] temperatures)
+        private void graphChanged(string[] date, double[] temperatures)
         {
             // Data arrays.
             string[] seriesArray = date;
-            float[] pointsArray = temperatures;
+            double[] pointsArray = temperatures;
 
 
             if (this.chartTemperature.Series.FindByName("Temperature") != null)
@@ -96,8 +96,10 @@ namespace ShowData
                 this.chartTemperature.Titles.Remove(this.chartTemperature.Titles.FindByName("Temperature"));
             }
 
+            chartTemperature.Palette = ChartColorPalette.Pastel;
             this.chartTemperature.Series.Add("Temperature");
-
+            this.chartTemperature.Series["Temperature"].IsValueShownAsLabel = true;
+            chartTemperature.ChartAreas[0].AxisX.MajorGrid.LineWidth = 0; 
             // Add series.
             for (int i = 0; i < seriesArray.Length; i++)
             {
@@ -114,7 +116,7 @@ namespace ShowData
         private void CheckedListBoxSensors_SelectedIndexChanged(object sender, EventArgs e)
         {
             datas = new List<string>();
-            temperatures = new List<float>();
+            temperatures = new List<double>();
 
             foreach (var series in chartTemperature.Series)
             {
@@ -130,7 +132,7 @@ namespace ShowData
                         if (Int32.Parse(sensor.SelectSingleNode("id").InnerText) == Int32.Parse(checkedListBoxSensors.GetItemText(i + 1)))
                         {
                             datas.Add(sensor.SelectSingleNode("date").InnerText);
-                            temperatures.Add(float.Parse(sensor.SelectSingleNode("temperature").InnerText));
+                            temperatures.Add(double.Parse(sensor.SelectSingleNode("temperature").InnerText));
                         }
                     }
                 }
