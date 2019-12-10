@@ -103,41 +103,10 @@ namespace ShowData
             });
         }
 
-        private void graphTemperature(string[] date, double[] temperatures)
-        {
-            // Data arrays.
-            string[] seriesArray = date;
-            double[] pointsArray = temperatures;
-
-
-            if (this.chartTemperature.Series.FindByName("Temperature") != null)
-            {
-                this.chartTemperature.Series.Remove(this.chartTemperature.Series.FindByName("Temperature"));
-                this.chartTemperature.Titles.Remove(this.chartTemperature.Titles.FindByName("Temperature"));
-            }
-
-            chartTemperature.Palette = ChartColorPalette.Pastel;
-            this.chartTemperature.Series.Add("Temperature");
-            this.chartTemperature.Series["Temperature"].IsValueShownAsLabel = true;
-            chartTemperature.ChartAreas[0].AxisX.MajorGrid.LineWidth = 0; 
-            // Add series.
-            for (int i = 0; i < seriesArray.Length; i++)
-            {
-                this.chartTemperature.Series["Temperature"].Points.AddXY(seriesArray[i], pointsArray[i]);
-                // Add series.
-                //  Series series = this.chartTemperature.Series.Add(seriesArray[i]);
-
-                // Add point.
-                //series.Points.Add(pointsArray[i]);
-            }
-        }
-
+        
 
         private void CheckedListBoxSensors_SelectedIndexChanged(object sender, EventArgs e)
         {
-            datas = new List<string>();
-            temperatures = new List<double>();
-
             foreach (var series in chartTemperature.Series)
             {
                 series.Points.Clear();
@@ -147,6 +116,8 @@ namespace ShowData
             {
                 if (checkedListBoxSensors.GetItemChecked(i) == true)
                 {
+                    datas.Clear();
+                    temperatures.Clear();
                     foreach (XmlNode sensor in nodeList)
                     {
                         if (Int32.Parse(sensor.SelectSingleNode("id").InnerText) == Int32.Parse(checkedListBoxSensors.GetItemText(i + 1)))
@@ -155,18 +126,15 @@ namespace ShowData
                             temperatures.Add(double.Parse(sensor.SelectSingleNode("temperature").InnerText));
                         }
                     }
+                    graphTemperature(datas.ToArray(), temperatures.ToArray(), (i+1).ToString());
                 }
-                graphTemperature(datas.ToArray(), temperatures.ToArray());
             }
 
         }
 
         private void checkedListBoxHum_SelectedIndexChanged(object sender, EventArgs e)
         {
-            datas = new List<string>();
-            humidity = new List<double>();
-
-            foreach (var series in chartTemperature.Series)
+            foreach (var series in chartHumidity.Series)
             {
                 series.Points.Clear();
             }
@@ -175,6 +143,8 @@ namespace ShowData
             {
                 if (checkedListBoxHum.GetItemChecked(i) == true)
                 {
+                    datas.Clear();
+                    humidity.Clear();
                     foreach (XmlNode sensor in nodeList)
                     {
                         if (Int32.Parse(sensor.SelectSingleNode("id").InnerText) == Int32.Parse(checkedListBoxHum.GetItemText(i + 1)))
@@ -183,37 +153,60 @@ namespace ShowData
                             humidity.Add(double.Parse(sensor.SelectSingleNode("humidity").InnerText));
                         }
                     }
+                    graphHumidity(datas.ToArray(), humidity.ToArray(), (i+1).ToString());
                 }
-                graphHumidity(datas.ToArray(), humidity.ToArray());
             }
         }
 
-        private void graphHumidity(string[] date, double[] humidity)
+        private void graphTemperature(string[] date, double[] temperatures, string serie)
+        {
+            // Data arrays.
+            string[] seriesArray = date;
+            double[] pointsArray = temperatures;
+
+            if (this.chartTemperature.Series.FindByName(serie) != null)
+            {
+                this.chartTemperature.Series.Remove(this.chartTemperature.Series.FindByName(serie));
+                this.chartTemperature.Titles.Remove(this.chartTemperature.Titles.FindByName(serie));
+            }
+
+
+            this.chartTemperature.Series.Add(serie);
+            this.chartTemperature.Series[serie].IsValueShownAsLabel = true;
+
+            chartTemperature.Series[serie].ChartType = SeriesChartType.Bar;
+            chartTemperature.ChartAreas[0].AxisX.MajorGrid.LineWidth = 0;
+            // Add series.
+            for (int i = 0; i < seriesArray.Length; i++)
+            {
+                this.chartTemperature.Series[serie].Points.AddXY(seriesArray[i], pointsArray[i]);
+            }
+        }
+
+
+        private void graphHumidity(string[] date, double[] humidity, string serie)
         {
             // Data arrays.
             string[] seriesArray = date;
             double[] pointsArray = humidity;
 
 
-            if (this.chartHumidity.Series.FindByName("Humidity") != null)
+            if (this.chartHumidity.Series.FindByName(serie) != null)
             {
-                this.chartHumidity.Series.Remove(this.chartHumidity.Series.FindByName("Humidity"));
-                this.chartHumidity.Titles.Remove(this.chartHumidity.Titles.FindByName("Humidity"));
+                this.chartHumidity.Series.Remove(this.chartHumidity.Series.FindByName(serie));
+                this.chartHumidity.Titles.Remove(this.chartHumidity.Titles.FindByName(serie));
             }
 
-            chartHumidity.Palette = ChartColorPalette.Pastel;
-            this.chartHumidity.Series.Add("Humidity");
-            this.chartHumidity.Series["Humidity"].IsValueShownAsLabel = true;
+            this.chartHumidity.Series.Add(serie);
+
+            chartHumidity.Series[serie].ChartType = SeriesChartType.Bar;
+            this.chartHumidity.Series[serie].IsValueShownAsLabel = true;
+
             chartHumidity.ChartAreas[0].AxisX.MajorGrid.LineWidth = 0;
             // Add series.
             for (int i = 0; i < seriesArray.Length; i++)
             {
-                this.chartHumidity.Series["Humidity"].Points.AddXY(seriesArray[i], pointsArray[i]);
-                // Add series.
-                //  Series series = this.chartTemperature.Series.Add(seriesArray[i]);
-
-                // Add point.
-                //series.Points.Add(pointsArray[i]);
+                this.chartHumidity.Series[serie].Points.AddXY(seriesArray[i], pointsArray[i]);
             }
         }
 

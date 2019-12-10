@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShowData", "ShowData\ShowDa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DefineAlert", "DefineAlert\DefineAlert.csproj", "{14EE035A-74B3-46F7-AE85-7F030074D482}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SensorsDBAPI", "SensorsDBAPI\SensorsDBAPI.csproj", "{82B26966-C5B5-4627-ACE3-6854669E1A55}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{14EE035A-74B3-46F7-AE85-7F030074D482}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14EE035A-74B3-46F7-AE85-7F030074D482}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14EE035A-74B3-46F7-AE85-7F030074D482}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82B26966-C5B5-4627-ACE3-6854669E1A55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82B26966-C5B5-4627-ACE3-6854669E1A55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82B26966-C5B5-4627-ACE3-6854669E1A55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82B26966-C5B5-4627-ACE3-6854669E1A55}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

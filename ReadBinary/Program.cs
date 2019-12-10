@@ -33,7 +33,7 @@ namespace ReadBinary
             int id, battery;
             float temperature, humidity;
             string formattedDate;
-            BinaryReader br = new BinaryReader(File.Open("C:\\Users\\joao_\\data.bin", FileMode.Open));
+            BinaryReader br = new BinaryReader(File.Open("C:\\Users\\hp\\Desktop\\data.bin", FileMode.Open));
             XmlDocument doc = new XmlDocument();
             XmlElement root = doc.CreateElement("sensors");
             doc.AppendChild(root);

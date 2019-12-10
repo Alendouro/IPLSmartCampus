@@ -1,0 +1,10 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="SensorsDBAPI.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="ConnString" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename="C:\Users\HP\Desktop\College\Quarto Ano\IS - 4 anos\IPLSmartCampus\SensorsDBAPI\App_Data\DBSensors.mdf";Integrated Security=True
+</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
