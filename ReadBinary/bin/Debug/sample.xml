@@ -1,30 +1,58 @@
 <sensors>
   <sensor>
     <id>1</id>
-    <temperature>22,75</temperature>
-    <humidity>47,84</humidity>
+    <temperature>22,52</temperature>
+    <humidity>47,17</humidity>
     <battery>100</battery>
-    <date>21-11-2019 19:48:56</date>
+    <date>19-11-2019 17:47:39</date>
   </sensor>
   <sensor>
     <id>2</id>
-    <temperature>22,89</temperature>
-    <humidity>47,16</humidity>
+    <temperature>22,36</temperature>
+    <humidity>47,19</humidity>
     <battery>99</battery>
-    <date>21-11-2019 19:48:56</date>
+    <date>19-11-2019 17:47:39</date>
   </sensor>
   <sensor>
     <id>1</id>
-    <temperature>22,24</temperature>
-    <humidity>47,66</humidity>
+    <temperature>22,86</temperature>
+    <humidity>47,35</humidity>
     <battery>99</battery>
-    <date>21-11-2019 19:49:11</date>
+    <date>19-11-2019 17:47:54</date>
   </sensor>
   <sensor>
     <id>2</id>
-    <temperature>22,04</temperature>
-    <humidity>47,8</humidity>
+    <temperature>22,08</temperature>
+    <humidity>47,66</humidity>
     <battery>99</battery>
-    <date>21-11-2019 19:49:11</date>
+    <date>19-11-2019 17:47:54</date>
+  </sensor>
+  <sensor>
+    <id>1</id>
+    <temperature>22</temperature>
+    <humidity>47,93</humidity>
+    <battery>99</battery>
+    <date>19-11-2019 17:48:09</date>
+  </sensor>
+  <sensor>
+    <id>2</id>
+    <temperature>22</temperature>
+    <humidity>47,05</humidity>
+    <battery>99</battery>
+    <date>19-11-2019 17:48:09</date>
+  </sensor>
+  <sensor>
+    <id>1</id>
+    <temperature>22,23</temperature>
+    <humidity>47,39</humidity>
+    <battery>99</battery>
+    <date>19-11-2019 17:48:24</date>
+  </sensor>
+  <sensor>
+    <id>2</id>
+    <temperature>22,64</temperature>
+    <humidity>47,94</humidity>
+    <battery>99</battery>
+    <date>19-11-2019 17:48:24</date>
   </sensor>
 </sensors>

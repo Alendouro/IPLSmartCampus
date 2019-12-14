@@ -103,40 +103,6 @@ namespace ShowData
             });
         }
 
-<<<<<<< Updated upstream
-        
-=======
-        private void graphTemperature(string[] date, double[] temperatures)
-        {
-            // Data arrays.
-            string[] seriesArray = date;
-            double[] pointsArray = temperatures;
-
-
-            if (this.chartTemperature.Series.FindByName("Temperature") != null)
-            {
-                this.chartTemperature.Series.Remove(this.chartTemperature.Series.FindByName("Temperature"));
-                this.chartTemperature.Titles.Remove(this.chartTemperature.Titles.FindByName("Temperature"));
-            }
-
-            //chartTemperature.Palette = ChartColorPalette.Pastel;
-            this.chartTemperature.Series.Add("Temperature");
-            //this.chartTemperature.Series["Temperature"].IsValueShownAsLabel = true;
-            chartTemperature.ChartAreas[0].AxisX.MajorGrid.LineWidth = 0; 
-            // Add series.
-            for (int i = 0; i < seriesArray.Length; i++)
-            {
-                this.chartTemperature.Series["Temperature"].Points.AddXY(seriesArray[i], pointsArray[i]);
-                // Add series.
-                //  Series series = this.chartTemperature.Series.Add(seriesArray[i]);
-
-                // Add point.
-                //series.Points.Add(pointsArray[i]);
-            }
-        }
-
->>>>>>> Stashed changes
-
         private void CheckedListBoxSensors_SelectedIndexChanged(object sender, EventArgs e)
         {
             foreach (var series in chartTemperature.Series)
