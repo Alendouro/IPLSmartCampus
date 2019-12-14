@@ -84,5 +84,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DefineAlert\DefineAlert.csproj">
+      <Project>{14ee035a-74b3-46f7-ae85-7f030074d482}</Project>
+      <Name>DefineAlert</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

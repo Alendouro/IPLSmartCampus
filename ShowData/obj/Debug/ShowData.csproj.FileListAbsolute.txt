@@ -36,3 +36,6 @@ C:\Users\HP\Desktop\College\Quarto Ano\IS - 4 anos\IPLSmartCampus\ShowData\bin\D
 C:\Users\HP\Desktop\College\Quarto Ano\IS - 4 anos\IPLSmartCampus\ShowData\bin\Debug\M2Mqtt.Net.dll
 C:\Users\HP\Desktop\College\Quarto Ano\IS - 4 anos\IPLSmartCampus\ShowData\bin\Debug\M2Mqtt.Net.pdb
 C:\Users\HP\Desktop\College\Quarto Ano\IS - 4 anos\IPLSmartCampus\ShowData\obj\Debug\ShowData.csproj.CopyComplete
+C:\Users\joao_\Desktop\IPLSmartCampus\ShowData\bin\Debug\DefineAlert.exe
+C:\Users\joao_\Desktop\IPLSmartCampus\ShowData\bin\Debug\DefineAlert.pdb
+C:\Users\joao_\Desktop\IPLSmartCampus\ShowData\bin\Debug\DefineAlert.exe.config

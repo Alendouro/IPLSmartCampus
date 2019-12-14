@@ -4,27 +4,27 @@
     <temperature>22,75</temperature>
     <humidity>47,84</humidity>
     <battery>100</battery>
-    <date>21-11-2019 19:48</date>
+    <date>21-11-2019 19:48:56</date>
   </sensor>
   <sensor>
     <id>2</id>
     <temperature>22,89</temperature>
     <humidity>47,16</humidity>
     <battery>99</battery>
-    <date>21-11-2019 19:48</date>
+    <date>21-11-2019 19:48:56</date>
   </sensor>
   <sensor>
     <id>1</id>
     <temperature>22,24</temperature>
     <humidity>47,66</humidity>
     <battery>99</battery>
-    <date>21-11-2019 19:49</date>
+    <date>21-11-2019 19:49:11</date>
   </sensor>
   <sensor>
     <id>2</id>
     <temperature>22,04</temperature>
     <humidity>47,8</humidity>
     <battery>99</battery>
-    <date>21-11-2019 19:49</date>
+    <date>21-11-2019 19:49:11</date>
   </sensor>
 </sensors>

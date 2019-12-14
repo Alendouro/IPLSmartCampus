@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<alerts>
+  <alert>
+    <id>1</id>
+    <type>Temperature</type>
+    <condition>between</condition>
+    <valueMin>2</valueMin>
+    <valueMax>5</valueMax>
+    <state>True</state>
+  </alert>
+  <alert>
+    <id>2</id>
+    <type>Temperature</type>
+    <condition>=</condition>
+    <value>5</value>
+    <state>True</state>
+  </alert>
+</alerts>

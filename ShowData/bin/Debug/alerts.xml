@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<alerts>
+  <alert>
+    <id>1</id>
+    <type>Humidity</type>
+    <condition>&lt;</condition>
+    <value>4</value>
+    <state>True</state>
+  </alert>
+  <alert>
+    <id>2</id>
+    <type>Temperature</type>
+    <condition>&lt;</condition>
+    <value>4</value>
+    <state>True</state>
+  </alert>
+  <alert>
+    <id>3</id>
+    <type>Temperature</type>
+    <condition>between</condition>
+    <valueMin>5</valueMin>
+    <valueMax>9</valueMax>
+    <state>False</state>
+  </alert>
+  <alert>
+    <id>4</id>
+    <type>Temperature</type>
+    <condition>&gt;</condition>
+    <value>4</value>
+    <state>True</state>
+  </alert>
+</alerts>

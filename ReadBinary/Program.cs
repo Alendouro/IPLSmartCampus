@@ -49,7 +49,7 @@ namespace ReadBinary
                     int trash = br.ReadInt32();
 
                 root.AppendChild(createSensor(doc, id, temperature, humidity, battery, formattedDate));
-
+                doc.Save(@"sample.xml");
             }
             return doc;
         }
@@ -59,6 +59,7 @@ namespace ReadBinary
             XmlElement sensor = doc.CreateElement("sensor");
             XmlElement idx = doc.CreateElement("id");
             idx.InnerText = id +"";
+            //.SetAttribute("id", id + "");
             XmlElement temperature = doc.CreateElement("temperature");
             temperature.InnerText = t+"";
             XmlElement humidity = doc.CreateElement("humidity");

@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.labelTitleDesktopApp = new System.Windows.Forms.Label();
             this.tabPage = new System.Windows.Forms.TabControl();
             this.tabPageRealTimeSensors = new System.Windows.Forms.TabPage();
@@ -41,9 +41,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.chartTemperature = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.checkedListBoxHum = new System.Windows.Forms.CheckedListBox();
-            this.chartHumidity = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label2 = new System.Windows.Forms.Label();
+            this.chartHumidity = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.checkedListBoxHum = new System.Windows.Forms.CheckedListBox();
+            this.btnAlerts = new System.Windows.Forms.Button();
             this.tabPage.SuspendLayout();
             this.tabPageRealTimeSensors.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -130,10 +131,10 @@
             // 
             // chartTemperature
             // 
-            chartArea5.Name = "ChartArea1";
-            this.chartTemperature.ChartAreas.Add(chartArea5);
-            legend5.Name = "Legend1";
-            this.chartTemperature.Legends.Add(legend5);
+            chartArea1.Name = "ChartArea1";
+            this.chartTemperature.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chartTemperature.Legends.Add(legend1);
             this.chartTemperature.Location = new System.Drawing.Point(218, 15);
             this.chartTemperature.Name = "chartTemperature";
             this.chartTemperature.Size = new System.Drawing.Size(824, 489);
@@ -152,6 +153,27 @@
             this.tabPage1.Text = "Humidity";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(19, 39);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(51, 13);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Sensores";
+            // 
+            // chartHumidity
+            // 
+            chartArea2.Name = "ChartArea1";
+            this.chartHumidity.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chartHumidity.Legends.Add(legend2);
+            this.chartHumidity.Location = new System.Drawing.Point(165, 18);
+            this.chartHumidity.Name = "chartHumidity";
+            this.chartHumidity.Size = new System.Drawing.Size(824, 489);
+            this.chartHumidity.TabIndex = 5;
+            this.chartHumidity.Text = "chart1";
+            // 
             // checkedListBoxHum
             // 
             this.checkedListBoxHum.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -164,32 +186,23 @@
             this.checkedListBoxHum.TabIndex = 4;
             this.checkedListBoxHum.SelectedIndexChanged += new System.EventHandler(this.checkedListBoxHum_SelectedIndexChanged);
             // 
-            // chartHumidity
+            // btnAlerts
             // 
-            chartArea6.Name = "ChartArea1";
-            this.chartHumidity.ChartAreas.Add(chartArea6);
-            legend6.Name = "Legend1";
-            this.chartHumidity.Legends.Add(legend6);
-            this.chartHumidity.Location = new System.Drawing.Point(165, 18);
-            this.chartHumidity.Name = "chartHumidity";
-            this.chartHumidity.Size = new System.Drawing.Size(824, 489);
-            this.chartHumidity.TabIndex = 5;
-            this.chartHumidity.Text = "chart1";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(19, 39);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(51, 13);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Sensores";
+            this.btnAlerts.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnAlerts.Location = new System.Drawing.Point(840, 9);
+            this.btnAlerts.Name = "btnAlerts";
+            this.btnAlerts.Size = new System.Drawing.Size(75, 23);
+            this.btnAlerts.TabIndex = 2;
+            this.btnAlerts.Text = "Alerts";
+            this.btnAlerts.UseVisualStyleBackColor = true;
+            this.btnAlerts.Click += new System.EventHandler(this.btnAlerts_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1127, 623);
+            this.Controls.Add(this.btnAlerts);
             this.Controls.Add(this.tabPage);
             this.Controls.Add(this.labelTitleDesktopApp);
             this.Name = "Form1";
@@ -223,6 +236,7 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart chartHumidity;
         private System.Windows.Forms.CheckedListBox checkedListBoxHum;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnAlerts;
     }
 }
 
