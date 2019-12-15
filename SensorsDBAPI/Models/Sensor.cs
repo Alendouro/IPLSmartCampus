@@ -7,9 +7,10 @@ namespace SensorsDBAPI.Models
 {
     public class Sensor
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
+        public int id_sensor { get; set; }
         public float Temperature { get; set; }
         public float Humidity { get; set; }
-        public DateTime DateTime { get; set; }
+        public DateTime Date { get; set; }
     }
 }
