@@ -11,6 +11,7 @@ namespace SensorsDBAPI.Models
         public int id_sensor { get; set; }
         public float Temperature { get; set; }
         public float Humidity { get; set; }
+        public int Battery { get; set; }
         public DateTime Date { get; set; }
     }
 }

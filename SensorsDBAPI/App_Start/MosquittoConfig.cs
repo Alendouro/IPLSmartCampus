@@ -46,10 +46,16 @@ namespace SensorsDBAPI
             {
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = conn;
-                cmd.CommandText = "INSERT INTO Sensors VALUES (@id, @temperature, @humidity, @date)";
+                cmd.CommandText = "IF NOT EXISTS (SELECT * FROM Sensors " +
+                    "WHERE id_sensor = @id AND Date = @date AND Temperature = @temperature AND Humidity = @humidity " +
+                    "AND Battery = @battery) " +
+                    "BEGIN " +
+                    "INSERT INTO Sensors (id_sensor, Temperature, Humidity, Date, Battery) VALUES (@id, @temperature, @humidity, @date, @battery) " +
+                    "END";
                 cmd.Parameters.AddWithValue("@id", float.Parse(sensor.SelectSingleNode("id").InnerText));
                 cmd.Parameters.AddWithValue("@temperature", float.Parse(sensor.SelectSingleNode("temperature").InnerText));
                 cmd.Parameters.AddWithValue("@humidity", float.Parse(sensor.SelectSingleNode("humidity").InnerText));
+                cmd.Parameters.AddWithValue("@battery", int.Parse(sensor.SelectSingleNode("battery").InnerText));
                 cmd.Parameters.AddWithValue("@date", DateTime.Parse(sensor.SelectSingleNode("date").InnerText));
                 cmd.ExecuteScalar();
             }

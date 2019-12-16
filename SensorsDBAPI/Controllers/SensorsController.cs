@@ -32,6 +32,7 @@ namespace SensorsDBAPI.Controllers
                         id_sensor = int.Parse(reader["id_sensor"].ToString()),
                         Temperature = float.Parse(reader["Temperature"].ToString()),
                         Humidity = float.Parse(reader["Humidity"].ToString()),
+                        Battery = int.Parse(reader["Battery"].ToString()),
                         Date = (DateTime) reader["Date"],
                     };
                     sensors.Add(s);
