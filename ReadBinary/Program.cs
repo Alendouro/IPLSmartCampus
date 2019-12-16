@@ -12,10 +12,10 @@ namespace ReadBinary
 {
     class Program
     {
+        private static MqttClient mClient = new MqttClient("127.0.0.1");
+
         static void Main(string[] args)
         {
-            MqttClient mClient = new MqttClient("127.0.0.1");
-
             mClient.Connect(Guid.NewGuid().ToString());
             if (!mClient.IsConnected)
             {
@@ -24,21 +24,22 @@ namespace ReadBinary
             }
 
             //byte[] qosLevels = { MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE};
-            XmlDocument doc = ReadingBinary();
+            //XmlDocument doc = ReadingBinary();
             
-            mClient.Publish("sensors", Encoding.UTF8.GetBytes(doc.OuterXml), MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, true);
+           // mClient.Publish("sensors", Encoding.UTF8.GetBytes(doc.OuterXml), MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, true);
         }
 
-        private static XmlDocument ReadingBinary() {
+        private static void ReadingBinary() {
             int id, battery;
             float temperature, humidity;
             string formattedDate;
-            BinaryReader br = new BinaryReader(File.Open("C:\\Users\\hp\\Desktop\\data.bin", FileMode.Open));
-            XmlDocument doc = new XmlDocument();
-            XmlElement root = doc.CreateElement("sensors");
-            doc.AppendChild(root);
+            BinaryReader br = new BinaryReader(File.Open("C:\\Users\\joao_\\data.bin", FileMode.Open));
+           
             while (br.BaseStream.Position != br.BaseStream.Length)
                 {
+                    XmlDocument doc = new XmlDocument();
+                    XmlElement root = doc.CreateElement("sensors");
+                    doc.AppendChild(root);
                     id = (byte)br.ReadInt32();
                     temperature = br.ReadSingle();
                     humidity = br.ReadSingle();
@@ -47,11 +48,10 @@ namespace ReadBinary
                     DateTime dt = new DateTime(1970, 1, 1, 0, 0, 0, 0).AddSeconds(timestamp).ToLocalTime();
                     formattedDate = dt.ToString("dd-MM-yyyy HH:mm:ss");
                     int trash = br.ReadInt32();
-
-                root.AppendChild(createSensor(doc, id, temperature, humidity, battery, formattedDate));
-                doc.Save(@"sample.xml");
+                    root.AppendChild(createSensor(doc, id, temperature, humidity, battery, formattedDate));
+                    mClient.Publish("sensors", Encoding.UTF8.GetBytes(doc.OuterXml), MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, true);
+                //doc.Save(@"sample.xml");
             }
-            return doc;
         }
 
         private static XmlElement createSensor(XmlDocument doc, int id, float t, float h, int b, string d)

@@ -45,6 +45,7 @@
             this.chartHumidity = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.checkedListBoxHum = new System.Windows.Forms.CheckedListBox();
             this.btnAlerts = new System.Windows.Forms.Button();
+            this.listBoxCurrentAlerts = new System.Windows.Forms.ListBox();
             this.tabPage.SuspendLayout();
             this.tabPageRealTimeSensors.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -72,7 +73,7 @@
             this.tabPage.Location = new System.Drawing.Point(32, 59);
             this.tabPage.Name = "tabPage";
             this.tabPage.SelectedIndex = 0;
-            this.tabPage.Size = new System.Drawing.Size(1056, 536);
+            this.tabPage.Size = new System.Drawing.Size(743, 354);
             this.tabPage.TabIndex = 1;
             // 
             // tabPageRealTimeSensors
@@ -81,7 +82,7 @@
             this.tabPageRealTimeSensors.Location = new System.Drawing.Point(4, 22);
             this.tabPageRealTimeSensors.Name = "tabPageRealTimeSensors";
             this.tabPageRealTimeSensors.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageRealTimeSensors.Size = new System.Drawing.Size(1048, 510);
+            this.tabPageRealTimeSensors.Size = new System.Drawing.Size(735, 328);
             this.tabPageRealTimeSensors.TabIndex = 0;
             this.tabPageRealTimeSensors.Text = "Real Sensor Data";
             this.tabPageRealTimeSensors.UseVisualStyleBackColor = true;
@@ -90,7 +91,7 @@
             // 
             this.listBoxSensorsData.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.listBoxSensorsData.FormattingEnabled = true;
-            this.listBoxSensorsData.Location = new System.Drawing.Point(9, 10);
+            this.listBoxSensorsData.Location = new System.Drawing.Point(9, 6);
             this.listBoxSensorsData.Name = "listBoxSensorsData";
             this.listBoxSensorsData.Size = new System.Drawing.Size(720, 316);
             this.listBoxSensorsData.TabIndex = 0;
@@ -103,7 +104,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(1048, 510);
+            this.tabPage3.Size = new System.Drawing.Size(735, 328);
             this.tabPage3.TabIndex = 1;
             this.tabPage3.Text = "Temperature";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -114,7 +115,7 @@
             this.checkedListBoxSensors.CheckOnClick = true;
             this.checkedListBoxSensors.ForeColor = System.Drawing.SystemColors.WindowText;
             this.checkedListBoxSensors.FormattingEnabled = true;
-            this.checkedListBoxSensors.Location = new System.Drawing.Point(21, 49);
+            this.checkedListBoxSensors.Location = new System.Drawing.Point(21, 26);
             this.checkedListBoxSensors.Name = "checkedListBoxSensors";
             this.checkedListBoxSensors.Size = new System.Drawing.Size(120, 90);
             this.checkedListBoxSensors.TabIndex = 3;
@@ -123,7 +124,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(18, 33);
+            this.label1.Location = new System.Drawing.Point(19, 7);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(51, 13);
             this.label1.TabIndex = 2;
@@ -135,9 +136,9 @@
             this.chartTemperature.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chartTemperature.Legends.Add(legend1);
-            this.chartTemperature.Location = new System.Drawing.Point(218, 15);
+            this.chartTemperature.Location = new System.Drawing.Point(148, 7);
             this.chartTemperature.Name = "chartTemperature";
-            this.chartTemperature.Size = new System.Drawing.Size(824, 489);
+            this.chartTemperature.Size = new System.Drawing.Size(578, 312);
             this.chartTemperature.TabIndex = 0;
             this.chartTemperature.Text = "chart1";
             // 
@@ -148,7 +149,7 @@
             this.tabPage1.Controls.Add(this.checkedListBoxHum);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(1048, 510);
+            this.tabPage1.Size = new System.Drawing.Size(735, 328);
             this.tabPage1.TabIndex = 2;
             this.tabPage1.Text = "Humidity";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -156,7 +157,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(19, 39);
+            this.label2.Location = new System.Drawing.Point(19, 7);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(51, 13);
             this.label2.TabIndex = 6;
@@ -168,9 +169,9 @@
             this.chartHumidity.ChartAreas.Add(chartArea2);
             legend2.Name = "Legend1";
             this.chartHumidity.Legends.Add(legend2);
-            this.chartHumidity.Location = new System.Drawing.Point(165, 18);
+            this.chartHumidity.Location = new System.Drawing.Point(148, 7);
             this.chartHumidity.Name = "chartHumidity";
-            this.chartHumidity.Size = new System.Drawing.Size(824, 489);
+            this.chartHumidity.Size = new System.Drawing.Size(578, 316);
             this.chartHumidity.TabIndex = 5;
             this.chartHumidity.Text = "chart1";
             // 
@@ -180,7 +181,7 @@
             this.checkedListBoxHum.CheckOnClick = true;
             this.checkedListBoxHum.ForeColor = System.Drawing.SystemColors.WindowText;
             this.checkedListBoxHum.FormattingEnabled = true;
-            this.checkedListBoxHum.Location = new System.Drawing.Point(22, 55);
+            this.checkedListBoxHum.Location = new System.Drawing.Point(21, 26);
             this.checkedListBoxHum.Name = "checkedListBoxHum";
             this.checkedListBoxHum.Size = new System.Drawing.Size(120, 90);
             this.checkedListBoxHum.TabIndex = 4;
@@ -189,7 +190,7 @@
             // btnAlerts
             // 
             this.btnAlerts.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnAlerts.Location = new System.Drawing.Point(840, 9);
+            this.btnAlerts.Location = new System.Drawing.Point(690, 12);
             this.btnAlerts.Name = "btnAlerts";
             this.btnAlerts.Size = new System.Drawing.Size(75, 23);
             this.btnAlerts.TabIndex = 2;
@@ -197,11 +198,21 @@
             this.btnAlerts.UseVisualStyleBackColor = true;
             this.btnAlerts.Click += new System.EventHandler(this.btnAlerts_Click);
             // 
+            // listBoxCurrentAlerts
+            // 
+            this.listBoxCurrentAlerts.FormattingEnabled = true;
+            this.listBoxCurrentAlerts.HorizontalScrollbar = true;
+            this.listBoxCurrentAlerts.Location = new System.Drawing.Point(794, 81);
+            this.listBoxCurrentAlerts.Name = "listBoxCurrentAlerts";
+            this.listBoxCurrentAlerts.Size = new System.Drawing.Size(174, 238);
+            this.listBoxCurrentAlerts.TabIndex = 3;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1127, 623);
+            this.ClientSize = new System.Drawing.Size(980, 416);
+            this.Controls.Add(this.listBoxCurrentAlerts);
             this.Controls.Add(this.btnAlerts);
             this.Controls.Add(this.tabPage);
             this.Controls.Add(this.labelTitleDesktopApp);
@@ -237,6 +248,7 @@
         private System.Windows.Forms.CheckedListBox checkedListBoxHum;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnAlerts;
+        private System.Windows.Forms.ListBox listBoxCurrentAlerts;
     }
 }
 

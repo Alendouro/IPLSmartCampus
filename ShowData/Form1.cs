@@ -18,7 +18,7 @@ namespace ShowData
     public partial class Form1 : Form
     {
         MqttClient mClient = new MqttClient("127.0.0.1"); //OR use the broker hostname
-        string[] mStrTopicsInfo = {"sensors"};
+        string[] mStrTopicsInfo = {"sensors", "alerts" };
         //Sensor 1
         List<double> temperatures = new List<double>();
         List<double> humidity = new List<double>();
@@ -58,46 +58,58 @@ namespace ShowData
             //Specify events we are interest on
             //New Msg Arrived
             mClient.MqttMsgPublishReceived += client_MqttMsgPublishReceived;
-            byte[] qosLevels = { MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE }; //QoS – depends on the topics number
+            byte[] qosLevels = { MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE }; //QoS – depends on the topics number
             //Subscribe to topics
             mClient.Subscribe(mStrTopicsInfo, qosLevels);
         }
 
-        private void client_MqttMsgPublishReceived(object sender, MqttMsgPublishEventArgs e)
+         private void client_MqttMsgPublishReceived(object sender, MqttMsgPublishEventArgs e)
         {
             // We have to invoke because the mqttp works in a callback (so it doesn't have access to the elements)
             this.Invoke( (MethodInvoker) delegate
             {
-                String msg = Encoding.UTF8.GetString(e.Message);
-                XmlDocument xm = new XmlDocument();
-                xm.LoadXml(string.Format(msg));
-                nodeList = xm.SelectNodes("/sensors/sensor");
-                //Save temperatures data in an array
-               
-                foreach (XmlNode sensor in nodeList)
+                if(e.Topic == "sensors")
                 {
-                    listBoxSensorsData.Items.Add("Id: " + sensor.SelectSingleNode("id").InnerText);
-                    listBoxSensorsData.Items.Add("Temperature: " + sensor.SelectSingleNode("temperature").InnerText);
-                    listBoxSensorsData.Items.Add("Humidity: " + sensor.SelectSingleNode("humidity").InnerText);
-                    listBoxSensorsData.Items.Add("Battery: " + sensor.SelectSingleNode("battery").InnerText);
-                    listBoxSensorsData.Items.Add("Date: " + sensor.SelectSingleNode("date").InnerText);
-                    listBoxSensorsData.Items.Add("--------------------------------------------------------------");
+                    String msg = Encoding.UTF8.GetString(e.Message);
+                    XmlDocument xm = new XmlDocument();
+                    xm.LoadXml(string.Format(msg));
+                    nodeList = xm.SelectNodes("/sensors/sensor");
+                    //Save temperatures data in an array
 
-                    datas.Add(sensor.SelectSingleNode("date").InnerText);
-                    temperatures.Add(Math.Round(double.Parse(sensor.SelectSingleNode("temperature").InnerText), 2, MidpointRounding.ToEven));
-                    humidity.Add(Math.Round(double.Parse(sensor.SelectSingleNode("humidity").InnerText), 2, MidpointRounding.ToEven));
-                }
-
-                //Percorrer os nodes para ir buscar os sensores existentes (p/ id) 
-                List<int> ids = new List<int>();
-                foreach (XmlNode sensor in nodeList)
-                {
-                    int id = Int32.Parse(sensor.SelectSingleNode("id").InnerText);
-                    if (!ids.Contains(id))
+                    foreach (XmlNode sensor in nodeList)
                     {
-                        ids.Add(id);
-                        checkedListBoxSensors.Items.Add(id);
-                        checkedListBoxHum.Items.Add(id);
+                        listBoxSensorsData.Items.Add("Id: " + sensor.SelectSingleNode("id").InnerText);
+                        listBoxSensorsData.Items.Add("Temperature: " + sensor.SelectSingleNode("temperature").InnerText);
+                        listBoxSensorsData.Items.Add("Humidity: " + sensor.SelectSingleNode("humidity").InnerText);
+                        listBoxSensorsData.Items.Add("Battery: " + sensor.SelectSingleNode("battery").InnerText);
+                        listBoxSensorsData.Items.Add("Date: " + sensor.SelectSingleNode("date").InnerText);
+                        listBoxSensorsData.Items.Add("--------------------------------------------------------------");
+
+                        datas.Add(sensor.SelectSingleNode("date").InnerText);
+                        temperatures.Add(Math.Round(double.Parse(sensor.SelectSingleNode("temperature").InnerText), 2, MidpointRounding.ToEven));
+                        humidity.Add(Math.Round(double.Parse(sensor.SelectSingleNode("humidity").InnerText), 2, MidpointRounding.ToEven));
+                    }
+
+                    //Percorrer os nodes para ir buscar os sensores existentes (p/ id) 
+                    List<int> ids = new List<int>();
+                    foreach (XmlNode sensor in nodeList)
+                    {
+                        int id = Int32.Parse(sensor.SelectSingleNode("id").InnerText);
+                        if (!ids.Contains(id))
+                        {
+                            ids.Add(id);
+                            checkedListBoxSensors.Items.Add(id);
+                            checkedListBoxHum.Items.Add(id);
+                        }
+                    }
+                }
+                if (e.Topic == "alerts")
+                {
+                    string msg = Encoding.UTF8.GetString(e.Message);
+                    Console.WriteLine(msg);
+                    if (!listBoxCurrentAlerts.Items.Contains(msg))
+                    {
+                        listBoxCurrentAlerts.Items.Add(msg);
                     }
                 }
             });

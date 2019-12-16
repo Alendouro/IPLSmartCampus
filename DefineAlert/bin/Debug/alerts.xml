@@ -4,15 +4,67 @@
     <id>1</id>
     <type>Temperature</type>
     <condition>between</condition>
-    <valueMin>2</valueMin>
-    <valueMax>5</valueMax>
+    <valueMin>15</valueMin>
+    <valueMax>35</valueMax>
     <state>True</state>
   </alert>
   <alert>
     <id>2</id>
+    <type>Humidity</type>
+    <condition>between</condition>
+    <valueMin>20</valueMin>
+    <valueMax>50</valueMax>
+    <state>True</state>
+  </alert>
+  <alert>
+    <id>3</id>
     <type>Temperature</type>
-    <condition>=</condition>
-    <value>5</value>
+    <condition>between</condition>
+    <valueMin>12</valueMin>
+    <valueMax>32</valueMax>
+    <state>True</state>
+  </alert>
+  <alert>
+    <id>4</id>
+    <type>Temperature</type>
+    <condition>between</condition>
+    <valueMin>12</valueMin>
+    <valueMax>32</valueMax>
+    <state>True</state>
+  </alert>
+  <alert>
+    <id>5</id>
+    <type>Humidity</type>
+    <condition>&gt;</condition>
+    <value>12</value>
+    <state>False</state>
+  </alert>
+  <alert>
+    <id>6</id>
+    <type>Temperature</type>
+    <condition>&gt;</condition>
+    <value>12</value>
+    <state>True</state>
+  </alert>
+  <alert>
+    <id>7</id>
+    <type>Temperature</type>
+    <condition>&gt;</condition>
+    <value>3</value>
+    <state>False</state>
+  </alert>
+  <alert>
+    <id>8</id>
+    <type>Temperature</type>
+    <condition>&lt;</condition>
+    <value>25</value>
+    <state>False</state>
+  </alert>
+  <alert>
+    <id>9</id>
+    <type>Humidity</type>
+    <condition>&gt;</condition>
+    <value>1</value>
     <state>True</state>
   </alert>
 </alerts>

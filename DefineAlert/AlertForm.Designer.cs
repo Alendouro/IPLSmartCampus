@@ -38,15 +38,16 @@
             this.comboBoxCondition = new System.Windows.Forms.ComboBox();
             this.comboBoxTypeAlert = new System.Windows.Forms.ComboBox();
             this.tabAlert = new System.Windows.Forms.TabPage();
-            this.listBoxAlerts = new System.Windows.Forms.ListBox();
-            this.btnShowAllAlerts = new System.Windows.Forms.Button();
-            this.btnAlertsAtive = new System.Windows.Forms.Button();
-            this.btnAlertsInactive = new System.Windows.Forms.Button();
-            this.numericUpDownState = new System.Windows.Forms.NumericUpDown();
-            this.labelID = new System.Windows.Forms.Label();
-            this.btnSaveState = new System.Windows.Forms.Button();
-            this.comboBoxState = new System.Windows.Forms.ComboBox();
+            this.listBoxAlertTimeCurrent = new System.Windows.Forms.ListBox();
             this.labelState = new System.Windows.Forms.Label();
+            this.comboBoxState = new System.Windows.Forms.ComboBox();
+            this.btnSaveState = new System.Windows.Forms.Button();
+            this.labelID = new System.Windows.Forms.Label();
+            this.numericUpDownState = new System.Windows.Forms.NumericUpDown();
+            this.btnAlertsInactive = new System.Windows.Forms.Button();
+            this.btnAlertsAtive = new System.Windows.Forms.Button();
+            this.btnShowAllAlerts = new System.Windows.Forms.Button();
+            this.listBoxAlerts = new System.Windows.Forms.ListBox();
             this.tabControl1.SuspendLayout();
             this.tabDefineAlert.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownValueMax)).BeginInit();
@@ -62,7 +63,7 @@
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(550, 286);
+            this.tabControl1.Size = new System.Drawing.Size(340, 338);
             this.tabControl1.TabIndex = 0;
             // 
             // tabDefineAlert
@@ -77,14 +78,14 @@
             this.tabDefineAlert.Location = new System.Drawing.Point(4, 22);
             this.tabDefineAlert.Name = "tabDefineAlert";
             this.tabDefineAlert.Padding = new System.Windows.Forms.Padding(3);
-            this.tabDefineAlert.Size = new System.Drawing.Size(542, 260);
+            this.tabDefineAlert.Size = new System.Drawing.Size(332, 312);
             this.tabDefineAlert.TabIndex = 0;
             this.tabDefineAlert.Text = "Define Alert";
             this.tabDefineAlert.UseVisualStyleBackColor = true;
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(296, 197);
+            this.btnClear.Location = new System.Drawing.Point(59, 213);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(75, 23);
             this.btnClear.TabIndex = 8;
@@ -95,7 +96,7 @@
             // labelBetween
             // 
             this.labelBetween.AutoSize = true;
-            this.labelBetween.Location = new System.Drawing.Point(157, 144);
+            this.labelBetween.Location = new System.Drawing.Point(148, 156);
             this.labelBetween.Name = "labelBetween";
             this.labelBetween.Size = new System.Drawing.Size(26, 13);
             this.labelBetween.TabIndex = 7;
@@ -105,22 +106,22 @@
             // numericUpDownValueMax
             // 
             this.numericUpDownValueMax.Enabled = false;
-            this.numericUpDownValueMax.Location = new System.Drawing.Point(198, 142);
+            this.numericUpDownValueMax.Location = new System.Drawing.Point(192, 149);
             this.numericUpDownValueMax.Name = "numericUpDownValueMax";
-            this.numericUpDownValueMax.Size = new System.Drawing.Size(120, 20);
+            this.numericUpDownValueMax.Size = new System.Drawing.Size(75, 20);
             this.numericUpDownValueMax.TabIndex = 6;
             this.numericUpDownValueMax.Visible = false;
             // 
             // numericUpDownValue
             // 
-            this.numericUpDownValue.Location = new System.Drawing.Point(17, 142);
+            this.numericUpDownValue.Location = new System.Drawing.Point(59, 149);
             this.numericUpDownValue.Name = "numericUpDownValue";
-            this.numericUpDownValue.Size = new System.Drawing.Size(120, 20);
+            this.numericUpDownValue.Size = new System.Drawing.Size(73, 20);
             this.numericUpDownValue.TabIndex = 5;
             // 
             // btnDefine
             // 
-            this.btnDefine.Location = new System.Drawing.Point(389, 197);
+            this.btnDefine.Location = new System.Drawing.Point(192, 213);
             this.btnDefine.Name = "btnDefine";
             this.btnDefine.Size = new System.Drawing.Size(75, 23);
             this.btnDefine.TabIndex = 3;
@@ -137,9 +138,9 @@
             "<",
             "=",
             "between"});
-            this.comboBoxCondition.Location = new System.Drawing.Point(16, 92);
+            this.comboBoxCondition.Location = new System.Drawing.Point(193, 91);
             this.comboBoxCondition.Name = "comboBoxCondition";
-            this.comboBoxCondition.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxCondition.Size = new System.Drawing.Size(74, 21);
             this.comboBoxCondition.TabIndex = 1;
             this.comboBoxCondition.SelectedIndexChanged += new System.EventHandler(this.comboBoxCondition_SelectedIndexChanged);
             // 
@@ -150,9 +151,9 @@
             this.comboBoxTypeAlert.Items.AddRange(new object[] {
             "Humidity",
             "Temperature"});
-            this.comboBoxTypeAlert.Location = new System.Drawing.Point(16, 43);
+            this.comboBoxTypeAlert.Location = new System.Drawing.Point(59, 91);
             this.comboBoxTypeAlert.Name = "comboBoxTypeAlert";
-            this.comboBoxTypeAlert.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxTypeAlert.Size = new System.Drawing.Size(74, 21);
             this.comboBoxTypeAlert.TabIndex = 0;
             // 
             // tabAlert
@@ -169,53 +170,63 @@
             this.tabAlert.Location = new System.Drawing.Point(4, 22);
             this.tabAlert.Name = "tabAlert";
             this.tabAlert.Padding = new System.Windows.Forms.Padding(3);
-            this.tabAlert.Size = new System.Drawing.Size(542, 260);
+            this.tabAlert.Size = new System.Drawing.Size(332, 312);
             this.tabAlert.TabIndex = 1;
             this.tabAlert.Text = "Alert";
             this.tabAlert.UseVisualStyleBackColor = true;
             // 
-            // listBoxAlerts
+            // listBoxAlertTimeCurrent
             // 
-            this.listBoxAlerts.FormattingEnabled = true;
-            this.listBoxAlerts.Location = new System.Drawing.Point(18, 41);
-            this.listBoxAlerts.Name = "listBoxAlerts";
-            this.listBoxAlerts.ScrollAlwaysVisible = true;
-            this.listBoxAlerts.Size = new System.Drawing.Size(221, 212);
-            this.listBoxAlerts.TabIndex = 0;
+            this.listBoxAlertTimeCurrent.FormattingEnabled = true;
+            this.listBoxAlertTimeCurrent.HorizontalScrollbar = true;
+            this.listBoxAlertTimeCurrent.Location = new System.Drawing.Point(358, 34);
+            this.listBoxAlertTimeCurrent.Name = "listBoxAlertTimeCurrent";
+            this.listBoxAlertTimeCurrent.Size = new System.Drawing.Size(295, 303);
+            this.listBoxAlertTimeCurrent.TabIndex = 9;
             // 
-            // btnShowAllAlerts
+            // labelState
             // 
-            this.btnShowAllAlerts.Location = new System.Drawing.Point(6, 6);
-            this.btnShowAllAlerts.Name = "btnShowAllAlerts";
-            this.btnShowAllAlerts.Size = new System.Drawing.Size(75, 23);
-            this.btnShowAllAlerts.TabIndex = 1;
-            this.btnShowAllAlerts.Text = "All Alerts";
-            this.btnShowAllAlerts.UseVisualStyleBackColor = true;
-            this.btnShowAllAlerts.Click += new System.EventHandler(this.btnShowAllAlerts_Click);
+            this.labelState.AutoSize = true;
+            this.labelState.Location = new System.Drawing.Point(14, 278);
+            this.labelState.Name = "labelState";
+            this.labelState.Size = new System.Drawing.Size(35, 13);
+            this.labelState.TabIndex = 8;
+            this.labelState.Text = "State:";
             // 
-            // btnAlertsAtive
+            // comboBoxState
             // 
-            this.btnAlertsAtive.Location = new System.Drawing.Point(87, 6);
-            this.btnAlertsAtive.Name = "btnAlertsAtive";
-            this.btnAlertsAtive.Size = new System.Drawing.Size(75, 23);
-            this.btnAlertsAtive.TabIndex = 2;
-            this.btnAlertsAtive.Text = "Alerts Active";
-            this.btnAlertsAtive.UseVisualStyleBackColor = true;
-            this.btnAlertsAtive.Click += new System.EventHandler(this.btnAlertsAtive_Click);
+            this.comboBoxState.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxState.FormattingEnabled = true;
+            this.comboBoxState.Items.AddRange(new object[] {
+            "True",
+            "False"});
+            this.comboBoxState.Location = new System.Drawing.Point(55, 275);
+            this.comboBoxState.Name = "comboBoxState";
+            this.comboBoxState.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxState.TabIndex = 7;
             // 
-            // btnAlertsInactive
+            // btnSaveState
             // 
-            this.btnAlertsInactive.Location = new System.Drawing.Point(168, 6);
-            this.btnAlertsInactive.Name = "btnAlertsInactive";
-            this.btnAlertsInactive.Size = new System.Drawing.Size(79, 23);
-            this.btnAlertsInactive.TabIndex = 3;
-            this.btnAlertsInactive.Text = "AlertsInactive";
-            this.btnAlertsInactive.UseVisualStyleBackColor = true;
-            this.btnAlertsInactive.Click += new System.EventHandler(this.btnAlertsInactive_Click);
+            this.btnSaveState.Location = new System.Drawing.Point(230, 268);
+            this.btnSaveState.Name = "btnSaveState";
+            this.btnSaveState.Size = new System.Drawing.Size(75, 23);
+            this.btnSaveState.TabIndex = 6;
+            this.btnSaveState.Text = "Save";
+            this.btnSaveState.UseVisualStyleBackColor = true;
+            this.btnSaveState.Click += new System.EventHandler(this.btnSaveState_Click);
+            // 
+            // labelID
+            // 
+            this.labelID.AutoSize = true;
+            this.labelID.Location = new System.Drawing.Point(14, 251);
+            this.labelID.Name = "labelID";
+            this.labelID.Size = new System.Drawing.Size(21, 13);
+            this.labelID.TabIndex = 5;
+            this.labelID.Text = "ID:";
             // 
             // numericUpDownState
             // 
-            this.numericUpDownState.Location = new System.Drawing.Point(338, 99);
+            this.numericUpDownState.Location = new System.Drawing.Point(41, 249);
             this.numericUpDownState.Name = "numericUpDownState";
             this.numericUpDownState.Size = new System.Drawing.Size(120, 20);
             this.numericUpDownState.TabIndex = 4;
@@ -225,51 +236,51 @@
             0,
             0});
             // 
-            // labelID
+            // btnAlertsInactive
             // 
-            this.labelID.AutoSize = true;
-            this.labelID.Location = new System.Drawing.Point(314, 101);
-            this.labelID.Name = "labelID";
-            this.labelID.Size = new System.Drawing.Size(21, 13);
-            this.labelID.TabIndex = 5;
-            this.labelID.Text = "ID:";
+            this.btnAlertsInactive.Location = new System.Drawing.Point(230, 190);
+            this.btnAlertsInactive.Name = "btnAlertsInactive";
+            this.btnAlertsInactive.Size = new System.Drawing.Size(79, 23);
+            this.btnAlertsInactive.TabIndex = 3;
+            this.btnAlertsInactive.Text = "AlertsInactive";
+            this.btnAlertsInactive.UseVisualStyleBackColor = true;
+            this.btnAlertsInactive.Click += new System.EventHandler(this.btnAlertsInactive_Click);
             // 
-            // btnSaveState
+            // btnAlertsAtive
             // 
-            this.btnSaveState.Location = new System.Drawing.Point(359, 166);
-            this.btnSaveState.Name = "btnSaveState";
-            this.btnSaveState.Size = new System.Drawing.Size(75, 23);
-            this.btnSaveState.TabIndex = 6;
-            this.btnSaveState.Text = "Save";
-            this.btnSaveState.UseVisualStyleBackColor = true;
-            this.btnSaveState.Click += new System.EventHandler(this.btnSaveState_Click);
+            this.btnAlertsAtive.Location = new System.Drawing.Point(230, 115);
+            this.btnAlertsAtive.Name = "btnAlertsAtive";
+            this.btnAlertsAtive.Size = new System.Drawing.Size(75, 23);
+            this.btnAlertsAtive.TabIndex = 2;
+            this.btnAlertsAtive.Text = "Alerts Active";
+            this.btnAlertsAtive.UseVisualStyleBackColor = true;
+            this.btnAlertsAtive.Click += new System.EventHandler(this.btnAlertsAtive_Click);
             // 
-            // comboBoxState
+            // btnShowAllAlerts
             // 
-            this.comboBoxState.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxState.FormattingEnabled = true;
-            this.comboBoxState.Items.AddRange(new object[] {
-            "True",
-            "False"});
-            this.comboBoxState.Location = new System.Drawing.Point(338, 135);
-            this.comboBoxState.Name = "comboBoxState";
-            this.comboBoxState.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxState.TabIndex = 7;
+            this.btnShowAllAlerts.Location = new System.Drawing.Point(230, 36);
+            this.btnShowAllAlerts.Name = "btnShowAllAlerts";
+            this.btnShowAllAlerts.Size = new System.Drawing.Size(75, 23);
+            this.btnShowAllAlerts.TabIndex = 1;
+            this.btnShowAllAlerts.Text = "All Alerts";
+            this.btnShowAllAlerts.UseVisualStyleBackColor = true;
+            this.btnShowAllAlerts.Click += new System.EventHandler(this.btnShowAllAlerts_Click);
             // 
-            // labelState
+            // listBoxAlerts
             // 
-            this.labelState.AutoSize = true;
-            this.labelState.Location = new System.Drawing.Point(297, 138);
-            this.labelState.Name = "labelState";
-            this.labelState.Size = new System.Drawing.Size(35, 13);
-            this.labelState.TabIndex = 8;
-            this.labelState.Text = "State:";
+            this.listBoxAlerts.FormattingEnabled = true;
+            this.listBoxAlerts.Location = new System.Drawing.Point(17, 22);
+            this.listBoxAlerts.Name = "listBoxAlerts";
+            this.listBoxAlerts.ScrollAlwaysVisible = true;
+            this.listBoxAlerts.Size = new System.Drawing.Size(166, 212);
+            this.listBoxAlerts.TabIndex = 0;
             // 
             // AlertForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(563, 299);
+            this.ClientSize = new System.Drawing.Size(687, 362);
+            this.Controls.Add(this.listBoxAlertTimeCurrent);
             this.Controls.Add(this.tabControl1);
             this.Name = "AlertForm";
             this.Text = "Alerts";
@@ -307,6 +318,7 @@
         private System.Windows.Forms.Button btnSaveState;
         private System.Windows.Forms.Label labelID;
         private System.Windows.Forms.NumericUpDown numericUpDownState;
+        private System.Windows.Forms.ListBox listBoxAlertTimeCurrent;
     }
 }
 
