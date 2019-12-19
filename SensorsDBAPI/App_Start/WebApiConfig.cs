@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SensorsDBAPI.Filters;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -21,6 +22,8 @@ namespace SensorsDBAPI
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            //config.Filters.Add(new BasicAuthenticationAttribute());
         }
     }
 }

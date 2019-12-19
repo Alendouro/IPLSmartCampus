@@ -106,7 +106,7 @@ namespace ShowData
                 if (e.Topic == "alerts")
                 {
                     string msg = Encoding.UTF8.GetString(e.Message);
-                    Console.WriteLine(msg);
+                    //Console.WriteLine(msg);
                     if (!listBoxCurrentAlerts.Items.Contains(msg))
                     {
                         listBoxCurrentAlerts.Items.Add(msg);

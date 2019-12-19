@@ -22,7 +22,6 @@ namespace DefineAlert
         string path = "C:\\Users\\joao_\\Desktop\\IPLSmartCampus\\ShowData\\bin\\Debug\\alerts.xml";
         XmlDocument doc = new XmlDocument();
         XmlNodeList nodeList;
-        List<string> alert_msgs = new List<string>();
 
         public AlertForm()
         {
@@ -54,6 +53,7 @@ namespace DefineAlert
 
             //start showAlerts always execute
             showAlerts();
+            sendDocToDb();
         }
 
         private void client_MqttMsgPublishReceived(object sender, MqttMsgPublishEventArgs e)
@@ -64,9 +64,19 @@ namespace DefineAlert
                 xm.LoadXml(string.Format(msg));
                 nodeList = xm.SelectNodes("/sensors/sensor");
                 compareValues();
+                
             });
+            
         }
 
+        private void sendDocToDb()
+        {
+            if (File.Exists(path))
+            {
+                doc.Load(path);
+                mClient.Publish("alertsdb", Encoding.UTF8.GetBytes(doc.OuterXml), MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, true);
+            }
+        }
         private void compareValues() {
             List<int> ids = new List<int>();
             List<XmlNode> nodeLast = new List<XmlNode>();
@@ -132,7 +142,7 @@ namespace DefineAlert
                 XmlNodeList nodeListAlerts = doc.SelectNodes("/alerts/alert");
                 foreach (XmlNode alert in nodeListAlerts)
                 {
-                    Console.WriteLine(alert.InnerText);
+                    //Console.WriteLine(alert.InnerText);
                     if (alert.SelectSingleNode("state").InnerText.ToUpper() == "True".ToUpper())
                     {
                         int id = Int32.Parse(alert.SelectSingleNode("id").InnerText);
@@ -146,7 +156,7 @@ namespace DefineAlert
                             {
                                 case "between":
                                     decimal valueMax = Convert.ToDecimal(alert.SelectSingleNode("valueMax").InnerText);
-                                    decimal valueMin = Convert.ToDecimal(alert.SelectSingleNode("valueMin").InnerText);
+                                    decimal valueMin = Convert.ToDecimal(alert.SelectSingleNode("value").InnerText);
                                     if (temperature > valueMin - 1 && temperature < valueMax + 1)
                                     {
                                         msg = "Sensor ID = " + sensorId + "! Temperature between " + valueMin + " and " + valueMax + "! Alert with id = " + id;
@@ -210,7 +220,7 @@ namespace DefineAlert
                             {
                                 case "between":
                                     decimal valueMax = Convert.ToDecimal(alert.SelectSingleNode("valueMax").InnerText);
-                                    decimal valueMin = Convert.ToDecimal(alert.SelectSingleNode("valueMin").InnerText);
+                                    decimal valueMin = Convert.ToDecimal(alert.SelectSingleNode("value").InnerText);
                                     if (humidity > valueMin - 1 && humidity < valueMax + 1)
                                     {
                                         msg = "Sensor ID = " + sensorId + "! Humidity between " + valueMin + " and " + valueMax + "! Alert with id = " + id;
@@ -333,7 +343,7 @@ namespace DefineAlert
             conditionx.InnerText = condition;
             alert.AppendChild(conditionx);
             if (condition == "between") {
-                XmlElement min = doc.CreateElement("valueMin");
+                XmlElement min = doc.CreateElement("value");
                 min.InnerText = value + "";
                 alert.AppendChild(min);
                 XmlElement max = doc.CreateElement("valueMax");
@@ -410,7 +420,7 @@ namespace DefineAlert
             listBoxAlerts.Items.Add("Condition: " + alert.SelectSingleNode("condition").InnerText);
             if (alert.SelectSingleNode("condition").InnerText.ToUpper() == "between".ToUpper())
             {
-                listBoxAlerts.Items.Add("Min: " + alert.SelectSingleNode("valueMin").InnerText);
+                listBoxAlerts.Items.Add("Min: " + alert.SelectSingleNode("value").InnerText);
                 listBoxAlerts.Items.Add("Max: " + alert.SelectSingleNode("valueMax").InnerText);
             }
             else

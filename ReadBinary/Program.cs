@@ -22,6 +22,7 @@ namespace ReadBinary
                 Console.WriteLine("Error connecting to message broker...");
                 return;
             }
+            ReadingBinary();
 
             //byte[] qosLevels = { MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE};
             //XmlDocument doc = ReadingBinary();
@@ -33,13 +34,14 @@ namespace ReadBinary
             int id, battery;
             float temperature, humidity;
             string formattedDate;
-            BinaryReader br = new BinaryReader(File.Open("C:\\Users\\joao_\\data.bin", FileMode.Open));
+            XmlDocument doc = new XmlDocument();
+            XmlElement root = doc.CreateElement("sensors");
+            doc.AppendChild(root);
+            BinaryReader br = new BinaryReader(File.Open("C:\\Users\\joao_\\Desktop\\data.bin", FileMode.Open));
            
             while (br.BaseStream.Position != br.BaseStream.Length)
-                {
-                    XmlDocument doc = new XmlDocument();
-                    XmlElement root = doc.CreateElement("sensors");
-                    doc.AppendChild(root);
+            {
+                   
                     id = (byte)br.ReadInt32();
                     temperature = br.ReadSingle();
                     humidity = br.ReadSingle();
@@ -49,8 +51,8 @@ namespace ReadBinary
                     formattedDate = dt.ToString("dd-MM-yyyy HH:mm:ss");
                     int trash = br.ReadInt32();
                     root.AppendChild(createSensor(doc, id, temperature, humidity, battery, formattedDate));
-                    mClient.Publish("sensors", Encoding.UTF8.GetBytes(doc.OuterXml), MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, true);
-                //doc.Save(@"sample.xml");
+                mClient.Publish("sensors", Encoding.UTF8.GetBytes(doc.OuterXml), MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, true);
+                doc.Save(@"sample.xml");
             }
         }
 
