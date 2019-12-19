@@ -34,10 +34,14 @@ namespace ReadBinary
             int id, battery;
             float temperature, humidity;
             string formattedDate;
+<<<<<<< Updated upstream
             XmlDocument doc = new XmlDocument();
             XmlElement root = doc.CreateElement("sensors");
             doc.AppendChild(root);
             BinaryReader br = new BinaryReader(File.Open("C:\\Users\\joao_\\Desktop\\data.bin", FileMode.Open));
+=======
+            BinaryReader br = new BinaryReader(File.Open("C:\\Users\\HP\\Desktop\\data.bin", FileMode.Open));
+>>>>>>> Stashed changes
            
             while (br.BaseStream.Position != br.BaseStream.Length)
             {
