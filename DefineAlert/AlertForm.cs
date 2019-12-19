@@ -19,7 +19,7 @@ namespace DefineAlert
         MqttClient mClient = new MqttClient("127.0.0.1"); //OR use the broker hostname
         string[] mStrTopicsInfo = { "sensors" };
         XmlDocument xm = new XmlDocument();
-        string path = "C:\\Users\\joao_\\Desktop\\IPLSmartCampus\\ShowData\\bin\\Debug\\alerts.xml";
+        string path = "C:\\Users\\HP\\Desktop\\College\\Quarto Ano\\IS - 4 anos\\IPLSmartCampus\\DefineAlert\\bin\\Debug\\alerts.xml";
         XmlDocument doc = new XmlDocument();
         XmlNodeList nodeList;
 
@@ -212,7 +212,7 @@ namespace DefineAlert
                     int id = Int32.Parse(alert.SelectSingleNode("id").InnerText);
                     if (alert.SelectSingleNode("state").InnerText.ToUpper() == "True".ToUpper())
                     {
-
+                        Console.WriteLine(alert.InnerText);
                         if (alert.SelectSingleNode("type").InnerText.ToUpper() == "Humidity".ToUpper())
                         {
                             string condition = alert.SelectSingleNode("condition").InnerText;
