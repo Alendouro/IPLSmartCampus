@@ -23,7 +23,7 @@ namespace SensorsDBAPI
                 defaults: new { id = RouteParameter.Optional }
             );
 
-            //config.Filters.Add(new BasicAuthenticationAttribute());
+            config.Filters.Add(new BasicAuthenticationAttribute());
         }
     }
 }

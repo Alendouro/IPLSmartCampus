@@ -10,7 +10,7 @@ using System.Web.Http;
 
 namespace SensorsDBAPI.Controllers
 {
-    //[BasicAuthentication]
+    [BasicAuthentication]
     public class AlertsController : ApiController
     {
         string connectionString = SensorsDBAPI.Properties.Settings.Default.ConnString;

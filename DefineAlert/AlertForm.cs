@@ -19,7 +19,7 @@ namespace DefineAlert
         MqttClient mClient = new MqttClient("127.0.0.1"); //OR use the broker hostname
         string[] mStrTopicsInfo = { "sensors" };
         XmlDocument xm = new XmlDocument();
-        string path = "C:\\Users\\HP\\Desktop\\College\\Quarto Ano\\IS - 4 anos\\IPLSmartCampus\\DefineAlert\\bin\\Debug\\alerts.xml";
+        string path = "C:\\Users\\HP\\Desktop\\College\\Quarto Ano\\IS - 4 anos\\IPLSmartCampus\\ShowData\\bin\\Debug\\alerts.xml";
         XmlDocument doc = new XmlDocument();
         XmlNodeList nodeList;
 

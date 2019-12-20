@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Text;
@@ -92,23 +93,38 @@ namespace SensorsDBAPI
                 SqlConnection conn = new SqlConnection(SensorsDBAPI.Properties.Settings.Default.ConnString);
                 //Save temperatures data in an array
                 conn = new SqlConnection(connectionString);
+                List<int> ids = new List<int>();
                 conn.Open();
 
                 foreach (XmlNode sensor in nodeList)
                 {
                     SqlCommand cmd = new SqlCommand();
                     cmd.Connection = conn;
-                    cmd.CommandText = "IF NOT EXISTS (SELECT * FROM Sensors " +
+                    cmd.CommandText = "IF NOT EXISTS (SELECT * FROM sensorsData " +
                         "WHERE id_sensor = @id AND Date = @date AND Temperature = @temperature AND Humidity = @humidity " +
                         "AND Battery = @battery) " +
                         "BEGIN " +
-                        "INSERT INTO Sensors (id_sensor, Temperature, Humidity, Date, Battery) VALUES (@id, @temperature, @humidity, @date, @battery) " +
+                        "INSERT INTO sensorsData (id_sensor, Temperature, Humidity, Date, Battery) VALUES (@id, @temperature, @humidity, @date, @battery) " +
                         "END";
-                    cmd.Parameters.AddWithValue("@id", float.Parse(sensor.SelectSingleNode("id").InnerText));
+                    cmd.Parameters.AddWithValue("@id", int.Parse(sensor.SelectSingleNode("id").InnerText));
                     cmd.Parameters.AddWithValue("@temperature", float.Parse(sensor.SelectSingleNode("temperature").InnerText));
                     cmd.Parameters.AddWithValue("@humidity", float.Parse(sensor.SelectSingleNode("humidity").InnerText));
                     cmd.Parameters.AddWithValue("@battery", int.Parse(sensor.SelectSingleNode("battery").InnerText));
                     cmd.Parameters.AddWithValue("@date", DateTime.Parse(sensor.SelectSingleNode("date").InnerText));
+                    cmd.ExecuteScalar();
+                    if (!ids.Contains(int.Parse(sensor.SelectSingleNode("id").InnerText)))
+                        ids.Add(int.Parse(sensor.SelectSingleNode("id").InnerText));
+                }
+                foreach (int id in ids)
+                {
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = conn;
+                    cmd.CommandText = "IF NOT EXISTS (SELECT * FROM sensor " +
+                        "WHERE Sensor = @id )" +
+                        "BEGIN " +
+                        "INSERT INTO sensor (Sensor) VALUES (@id) " +
+                        "END";
+                    cmd.Parameters.AddWithValue("@id", id);
                     cmd.ExecuteScalar();
                 }
                 conn.Close();

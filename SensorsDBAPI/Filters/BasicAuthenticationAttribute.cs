@@ -51,7 +51,7 @@ namespace SensorsDBAPI.Filters
             public static bool IsAuthorizedUser(string username, string password)
             {
                 // In this method we can handle our database logic here...  
-                return username == "teste" && password == "demo";
+                return username == "admin" && password == "admin123";
             }
 
     }
