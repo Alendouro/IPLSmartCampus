@@ -56,18 +56,22 @@ namespace SensorsDBAPI.Controllers
         [Route("api/sensors/all")]
         public IHttpActionResult GetAllSensors()
         {
-            List<int> sensors = new List<int>();
+            List<Sensor> sensors = new List<Sensor>();
             SqlConnection conn = null;
             try
             {
                 conn = new SqlConnection(connectionString);
                 conn.Open();
-                SqlCommand cmd = new SqlCommand("SELECT DISTINCT id_sensor FROM sensorsData");
+                SqlCommand cmd = new SqlCommand("SELECT * FROM sensor");
                 cmd.Connection = conn;
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    sensors.Add(int.Parse(reader["id_sensor"].ToString()));
+                    Sensor s = new Sensor
+                    {
+                        sensor = int.Parse(reader["sensor"].ToString())
+                    };
+                    sensors.Add(s);
                 }
                 reader.Close();
                 conn.Close();
@@ -122,9 +126,58 @@ namespace SensorsDBAPI.Controllers
             return NotFound();
         }
 
-        
 
+        [Route("api/sensor/new")]
+        [HttpPost]
         //Post new sensor
+        public IHttpActionResult PostNewSensor([FromBody]Sensor data)
+        {
+            List<int> sensorlist = new List<int>();
+            SqlConnection conn = null;
+
+            try
+            {
+                conn = new SqlConnection(connectionString);
+                conn.Open();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandText = "SELECT * FROM sensor";
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    sensorlist.Add(int.Parse(reader["sensor"].ToString()));
+                }
+
+                if (sensorlist.Contains(int.Parse(data.sensor.ToString())))
+                {
+                    return BadRequest("Sensor exists already");
+                }
+                reader.Close();
+
+                cmd.CommandText = "IF NOT EXISTS (SELECT * FROM sensor " +
+                        "WHERE sensor = @sensor) " +
+                    "BEGIN " +
+                        "INSERT INTO sensor (sensor) VALUES (@sensor) " +
+                    "END";
+                cmd.Parameters.AddWithValue("@sensor", int.Parse(data.sensor.ToString()));
+
+                cmd.ExecuteScalar();
+                conn.Close();
+
+
+            }
+            catch (Exception e)
+            {
+                if (conn.State == System.Data.ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                return BadRequest(e.Message);
+            }
+
+            return Ok();
+
+        }
 
         //Post new data of sensor
         [Route("api/sensor")]
