@@ -19,7 +19,11 @@ namespace DefineAlert
         MqttClient mClient = new MqttClient("127.0.0.1"); //OR use the broker hostname
         string[] mStrTopicsInfo = { "sensors" };
         XmlDocument xm = new XmlDocument();
+<<<<<<< Updated upstream
         string path = "C:\\Users\\HP\\Desktop\\College\\Quarto Ano\\IS - 4 anos\\IPLSmartCampus\\ShowData\\bin\\Debug\\alerts.xml";
+=======
+        string path = "C:\\Users\\joao_\\Desktop\\IPLSmartCampus\\ShowData\\bin\\Debug\\alerts.xml";
+>>>>>>> Stashed changes
         XmlDocument doc = new XmlDocument();
         XmlNodeList nodeList;
 
@@ -36,7 +40,6 @@ namespace DefineAlert
             comboBoxTypeAlert.SelectedIndex = 0;
             comboBoxCondition.SelectedIndex = 0;
             comboBoxState.SelectedIndex = 0;
-
             //connect to mqtt
             mClient.Connect(Guid.NewGuid().ToString());
             if (!mClient.IsConnected)

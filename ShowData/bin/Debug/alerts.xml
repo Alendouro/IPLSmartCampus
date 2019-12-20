@@ -81,4 +81,11 @@
     <value>2</value>
     <state>True</state>
   </alert>
+  <alert>
+    <id>12</id>
+    <type>Temperature</type>
+    <condition>&gt;</condition>
+    <value>20</value>
+    <state>True</state>
+  </alert>
 </alerts>
