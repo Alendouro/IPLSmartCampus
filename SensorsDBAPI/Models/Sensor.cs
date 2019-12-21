@@ -8,6 +8,8 @@ namespace SensorsDBAPI.Models
     public class Sensor
     {
         public int sensor { get; set; }
+
+        public int isActive { get; set; }
         
     }
 }

@@ -25,7 +25,8 @@ namespace SensorsDBAPI.Controllers
             try
             {
                 conn.Open();
-                SqlCommand cmd = new SqlCommand("SELECT * FROM sensorsData", conn);
+                SqlCommand cmd = new SqlCommand("SELECT sd.* FROM sensorsData sd JOIN " +
+                    "sensor s ON sd.id_sensor = s.Sensor WHERE s.isActive = 1", conn);
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
@@ -69,7 +70,8 @@ namespace SensorsDBAPI.Controllers
                 {
                     Sensor s = new Sensor
                     {
-                        sensor = int.Parse(reader["sensor"].ToString())
+                        sensor = int.Parse(reader["sensor"].ToString()),
+                        isActive = int.Parse(reader["isActive"].ToString())
                     };
                     sensors.Add(s);
                 }
@@ -127,6 +129,57 @@ namespace SensorsDBAPI.Controllers
         }
 
 
+        [Route("api/sensor/{id}")]
+        [HttpPut]
+        //Post new sensor
+        public IHttpActionResult PutSensor([FromBody]Sensor data, int id)
+        {
+            List<int> sensorlist = new List<int>();
+            SqlConnection conn = null;
+
+            try
+            {
+                conn = new SqlConnection(connectionString);
+                conn.Open();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandText = "SELECT * FROM sensor";
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    sensorlist.Add(int.Parse(reader["sensor"].ToString()));
+                }
+
+                if (!sensorlist.Contains(id))
+                {
+                    return BadRequest("Sensor does not exist");
+                }
+                reader.Close();
+
+                cmd.CommandText = "UPDATE sensor SET isActive=@isActive, Sensor=@sensor where sensor=@id";
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.Parameters.AddWithValue("@sensor", int.Parse(data.sensor.ToString()));
+                cmd.Parameters.AddWithValue("@isActive ", data.isActive);
+
+                cmd.ExecuteScalar();
+                conn.Close();
+
+
+            }
+            catch (Exception e)
+            {
+                if (conn.State == System.Data.ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                return BadRequest(e.Message);
+            }
+
+            return Ok();
+
+        }
+
+
         [Route("api/sensor/new")]
         [HttpPost]
         //Post new sensor
@@ -157,7 +210,7 @@ namespace SensorsDBAPI.Controllers
                 cmd.CommandText = "IF NOT EXISTS (SELECT * FROM sensor " +
                         "WHERE sensor = @sensor) " +
                     "BEGIN " +
-                        "INSERT INTO sensor (sensor) VALUES (@sensor) " +
+                        "INSERT INTO sensor (sensor, isActive) VALUES (@sensor, 1) " +
                     "END";
                 cmd.Parameters.AddWithValue("@sensor", int.Parse(data.sensor.ToString()));
 
@@ -235,8 +288,8 @@ namespace SensorsDBAPI.Controllers
 
         }
 
-        [Route("api/sensors/date")]
-        public IHttpActionResult GetSensorsByDate()
+        [Route("api/sensors/{id}/date")]
+        public IHttpActionResult GetSensorsByDate(int id)
         {
             var queryStrings = new Dictionary<string, string>();
             string date1;
@@ -257,10 +310,12 @@ namespace SensorsDBAPI.Controllers
             {
                 conn = new SqlConnection(connectionString);
                 conn.Open();
-                SqlCommand cmd = new SqlCommand("SELECT * FROM sensorsData WHERE Date BETWEEN @date1 AND @date2");
+                SqlCommand cmd = new SqlCommand("SELECT * FROM sensorsData WHERE Date BETWEEN @date1 AND @date2 " +
+                    "AND id_sensor = @id");
                 cmd.Connection = conn;
                 cmd.Parameters.AddWithValue("@date1", dateToCompareFirst);
                 cmd.Parameters.AddWithValue("@date2", dateToCompareLast);
+                cmd.Parameters.AddWithValue("@id", id);
 
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())

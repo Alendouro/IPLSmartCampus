@@ -122,7 +122,7 @@ namespace SensorsDBAPI
                     cmd.CommandText = "IF NOT EXISTS (SELECT * FROM sensor " +
                         "WHERE Sensor = @id )" +
                         "BEGIN " +
-                        "INSERT INTO sensor (Sensor) VALUES (@id) " +
+                        "INSERT INTO sensor (Sensor, isActive) VALUES (@id, 1) " +
                         "END";
                     cmd.Parameters.AddWithValue("@id", id);
                     cmd.ExecuteScalar();
